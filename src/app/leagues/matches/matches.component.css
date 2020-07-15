@@ -1,0 +1,35 @@
+table {
+    margin: 0 3%;
+    width: 94%;
+    background-color: #f7f7f7;
+}
+
+.match-day {
+    text-align: center;
+    font-weight: 600;
+    font-size: large;
+    margin: 20px 0 10px;
+}
+
+.tracked-team {
+    color: white;
+    background-color: darkcyan;
+    font-weight: 600;
+}
+
+.scroll-view {    
+    position:  fixed;
+    top:  130px;
+    width: 100%;
+    overflow-y: scroll;
+    bottom: 0;
+}
+
+@media (max-width: 640px) { 
+    table {
+        font-size: 1vh;
+    }
+    .match-day {
+        font-size: 3vw;
+    }
+ }

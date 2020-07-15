@@ -1,0 +1,14 @@
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let player of players; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ player.name }}</td>
+      </tr>
+    </tbody>
+  </table>

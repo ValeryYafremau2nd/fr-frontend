@@ -1,0 +1,42 @@
+<!-- Menu -->
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark menu">
+  <a href="#" style="color: white">Match Tracker</a>
+  <ul *ngIf="isLoggedIn" class="navbar-nav mr-auto">
+    <li class="nav-item" [ngClass]="{'active' : !isFavourite}">
+      <a class="nav-link" routerLink="/leagues">Overview</a>
+    </li>
+    <li class="nav-item" [ngClass]="{'active' : isFavourite}">
+      <a class="nav-link" routerLink="/favourite">Tracked</a>
+    </li>
+  </ul>
+  <form class="form-inline" style="float:right" action="#">
+    
+    <button *ngIf="isLoggedIn" class="btn btn-danger" (click)="logOut()" style="font-size: 15px;">Logout</button>
+  </form>
+</nav>
+
+<!-- Submenu -->
+<nav class="navbar navbar-expand-sm bg-light navbar-light submenu" style="justify-content:initial;">
+  <ul class="navbar-nav">
+    <li class="nav-item" *ngIf="!isFavourite" [ngClass]="{'active' : tab==='standing'}">
+      <a class="nav-link" [routerLink]="urlRoot + '/standings'">Standing</a>
+    </li>
+    <li class="nav-item" *ngIf="isVisible || isFavourite" [ngClass]="{'active' : tab==='matches'}">
+      <a class="nav-link" [routerLink]="urlRoot + '/matches'">Matches</a>
+    </li>
+    <li class="nav-item" *ngIf="isFavourite" [ngClass]="{'active' : tab==='teams'}">
+      <a class="nav-link" [routerLink]="'/favourite/teams'">Teams</a>
+    </li>
+    <!--
+    <li class="nav-item" *ngIf="!isFavourite" [ngClass]="{'active' : tab==='strikers'}">
+      <a class="nav-link" [routerLink]="urlRoot + '/strikers'">Strikers</a>
+    </li>
+    <li class="nav-item" *ngIf="isFavourite" [ngClass]="{'active' : tab==='leagues'}">
+      <a class="nav-link" [routerLink]="'/favourite/leagues'">Leagues</a>
+    </li>
+    -->
+  </ul>
+  <div>
+    <a class="btn btn-link" (click)="goBack()" style="font-size: 15px; color: lightseagreen; border-left: solid 1px white; border-radius: 0;">< Back</a>
+  </div>
+</nav>

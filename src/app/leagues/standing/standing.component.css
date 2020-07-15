@@ -1,0 +1,36 @@
+.team-link:hover {
+    cursor: pointer;
+}
+.team-link {
+    font-weight: 600;
+    text-align: left;
+}
+table {
+    background-color: #f7f7f7;
+    margin: 0 3%;
+    width: 94%;
+}
+th {
+    border-top: none;
+}
+tr {
+    text-align: center;
+}
+thead {
+    background-color: darkcyan;
+    color: white;
+}
+
+.scroll-view {    
+    position:  fixed;
+    top:  100px;
+    width: 100%;
+    overflow-y: scroll;
+    bottom: 0;
+}
+
+@media (max-width: 640px) { 
+    table {
+        font-size: .8vh;
+    }
+ }

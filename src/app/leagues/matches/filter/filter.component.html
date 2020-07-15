@@ -1,0 +1,26 @@
+<div class="match-filter">
+    <form class="form-inline">
+        <div class="form-group mb-3">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="showFinished"
+            [(ngModel)]="showFinishedCheckboxValue"
+            [ngModelOptions]="{standalone: true}"
+            (change)="showFinishedFilter()"
+            >
+          <label class="form-check-label" for="showFinished">Show finished</label>
+        </div>
+        <div class="form-group mb-3" *ngIf="isFavourite">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              id="showTrackedTeams"
+              [(ngModel)]="showCheckedTeamsCheckboxValue"
+              [ngModelOptions]="{standalone: true}"
+              (change)="showTrackedTeamsFilter()"
+              >
+          <label class="form-check-label" for="showTrackedTeams">Show tracked teams</label>
+        </div>
+      </form>
+</div>

@@ -1,0 +1,26 @@
+<app-filter></app-filter>
+<div class="scroll-view" style="text-align: center;">
+  <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
+<div *ngFor="let matchDay of matchDays">
+  <div class="match-day">{{ matchDay._id | date }}</div>
+  <table class="table">
+    <tbody>
+      <tr *ngFor="let match of matchDay.matches">
+        <th style="width: 10%;">{{ match.utcDate | date:'shortTime' }}</th>
+        <td style="width: 28%; text-align: right;" [ngClass]="{'tracked-team': match.homeTeam.tracked}">{{ match.homeTeam.name }}</td>
+        <td style="width: 5%; text-align: right;">{{ match.score.fullTime.homeTeam }}</td>
+        <td style="width: 4%;">:</td>
+        <td style="width: 5%; text-align: left;">{{ match.score.fullTime.awayTeam }}</td>
+        <td style="width: 28%; text-align: left;" [ngClass]="{'tracked-team': match.awayTeam.tracked}">{{ match.awayTeam.name }}</td>
+        <td style="width: 10%;"><app-track
+          [itemId]="match.id"
+          [tracker]="trackMatch.bind(this)"
+          [untracker]="untrackMatch.bind(this)"
+          [tracked]="match.tracked"
+          style="float:right"
+        ></app-track></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>

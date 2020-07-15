@@ -1,0 +1,34 @@
+<div class="scroll-view">
+<table *ngFor="let standing of standings" class="table">
+    <thead>
+      <tr *ngIf="standing._id"><td colspan=8 align="center" style="background-color: white; font-weight: bolder; color: green; padding: 30px 0 10px; border: none">{{ standing._id.replace('_', ' ') }}</td></tr>
+      <tr>
+        <th>#</th>
+        <th>Team</th>
+        <th>Matches</th>
+        <th>Wins</th>
+        <th>Draws</th>
+        <th>Loses</th>
+        <th>Points</th>
+        <th>Track</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let position of standing.table; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td class="team-link">{{ position.team.name }}</td>
+        <td>{{ position.playedGames }}</td>
+        <td>{{ position.won }}</td>
+        <td>{{ position.draw }}</td>
+        <td>{{ position.lost }}</td>
+        <td>{{ position.points }}</td>
+        <td style="width:15%;text-align: center;"><app-track
+            [itemId]="position.team.id"
+            [tracker]="trackTeam.bind(this)"
+            [untracker]="untrackTeam.bind(this)"
+            [tracked]="position.trackedTeam"
+          ></app-track></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
