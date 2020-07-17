@@ -1,5 +1,4 @@
 export const environment = {
-    production: true,
+    production: false,
     api: 'https://localhst:3000'
   };
-  

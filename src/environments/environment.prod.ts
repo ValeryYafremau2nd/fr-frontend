@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  api: 'https://localhst:3000'
+  api: 'http://1-env.eba-5cbn2rz4.eu-west-2.elasticbeanstalk.com'
 };
