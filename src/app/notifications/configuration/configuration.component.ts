@@ -1,0 +1,46 @@
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Store } from "@ngrx/store";
+import {
+  AddNotification,
+  RemoveNotification,
+} from "../store/notification.actions";
+import { Subscription } from "rxjs";
+
+@Component({
+  selector: "app-configuration",
+  templateUrl: "./configuration.component.html",
+  styleUrls: ["./configuration.component.css"],
+})
+export class ConfigurationComponent implements OnInit, OnDestroy {
+  timestampSub: Subscription;
+  timestamps: [];
+
+  constructor(private store: Store<any>) {
+    console.log(this.store);
+    this.timestampSub = this.store
+      .select("notifications")
+      .subscribe((notifications) => {
+        console.log(notifications);
+        this.timestamps = notifications.notifications;
+      });
+  }
+
+  onSubmit(timestamp) {
+    this.store.dispatch(new AddNotification(timestamp));
+  }
+
+  onDelete(timestamp) {
+    this.store.dispatch(new RemoveNotification(timestamp));
+  }
+
+  updateTimestamp(event, timestamp) {
+    event.currentTarget.checked
+      ? this.onSubmit(timestamp)
+      : this.onDelete(timestamp);
+  }
+
+  ngOnInit(): void {}
+  ngOnDestroy() {
+    this.timestampSub.unsubscribe();
+  }
+}

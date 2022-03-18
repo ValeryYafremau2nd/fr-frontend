@@ -1,0 +1,4 @@
+<div [ngSwitch]="tracked">
+    <button *ngSwitchCase="true" type="button" class="btn btn-success" (click)="untrack()">Untrack</button>
+    <button *ngSwitchCase="false" type="button" class="btn btn-secondary" (click)="track()">Track</button>
+</div>

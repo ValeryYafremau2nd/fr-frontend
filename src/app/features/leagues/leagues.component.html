@@ -1,0 +1,15 @@
+<div class="scroll-view">
+<div class="leagues-box">
+<div *ngFor="let league of leagues" class="league-container">
+    <div class="league-logo" [routerLink]="'/leagues/' + league.id + '/standings'">
+        <!--<div class="league-name">{{ league.name }}</div>-->
+        <div class="helper"></div>
+        <img [src]="league.emblemUrl">
+    </div>
+    <!--<div [ngSwitch]="league.tracked" class="league-selector">
+        <button *ngSwitchCase="true" type="button" class="btn btn-success" (click)="untrack($event, league)">Untrack</button>
+        <button *ngSwitchCase="false" type="button" class="btn btn-secondary" (click)="track($event, league)">Track</button>
+    </div>-->
+</div>
+</div>
+</div>

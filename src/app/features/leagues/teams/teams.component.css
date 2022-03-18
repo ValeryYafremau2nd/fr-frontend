@@ -1,0 +1,19 @@
+table {
+    width: auto;
+    max-width: 94%;
+    margin: auto;
+}
+
+.scroll-view {    
+    position:  fixed;
+    top:  100px;
+    width: 100%;
+    overflow-y: scroll;
+    bottom: 0;
+}
+
+@media (max-width: 640px) { 
+    .table {
+        font-size: 1vh;
+    }
+ }

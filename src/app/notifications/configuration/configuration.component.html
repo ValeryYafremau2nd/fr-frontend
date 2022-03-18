@@ -1,0 +1,14 @@
+<div class="scroll-view">
+<table class="table">
+    <tbody>
+      <tr style="text-align: center;"> Notify </tr>
+      <tr *ngFor="let timestamp of [
+            {text: 'When match starts', timestamp: 0 },
+            {text: 'In 10 minutes', timestamp: 10},
+            {text: 'In 1 hour', timestamp: 60}]">
+          <td><input type="checkbox" (change)="updateTimestamp($event, timestamp.timestamp)"></td>
+          <td style="text-align: left;">{{timestamp.text}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

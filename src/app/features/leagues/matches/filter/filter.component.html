@@ -1,0 +1,32 @@
+<div class="match-filter">
+    <form class="form-inline" [formGroup]="filterGroup">
+        <div class="form-group mb-3">
+          <mat-slide-toggle
+            formControlName="showFinished"
+            (change)="showFinishedFilter()"
+            [checked]="showFinishedCheckboxValue"
+            >
+            <span style="color: burlywood">Show finished</span>
+          </mat-slide-toggle>
+        </div> 
+        <div class="form-group mb-3">
+          <mat-slide-toggle
+            style
+            formControlName="showPostponed"
+            (change)="showPostponedFilter()"
+            [checked]="showPostponedCheckboxValue"
+            >
+            <span style="color: cornsilk">Show postponed</span>
+          </mat-slide-toggle>
+        </div> 
+        <div class="form-group mb-3" *ngIf="isFavourite">
+          <mat-slide-toggle
+          formControlName="showTrackedTeams"
+            (change)="showTrackedTeamsFilter()"
+            [checked]="showCheckedTeamsCheckboxValue"
+            >
+            Show tracked teams
+          </mat-slide-toggle>
+        </div>
+      </form>
+</div>

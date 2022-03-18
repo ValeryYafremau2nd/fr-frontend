@@ -1,0 +1,39 @@
+nav {
+    position: fixed;
+    width: 100%;
+    height:50px;
+    top: 0px;
+}
+nav ul {
+    flex-direction: row;
+}
+nav ul li {
+    padding: 0 5px;
+}
+
+.submenu {
+    top: 50px;
+    font-weight: 500;
+    border-bottom: solid 2px;
+}
+.menu > a {
+}
+.main-tab {
+    color:darkcyan !important;
+    text-decoration: none;
+    font-family: fantasy !important;
+    font-size: 20px !important;
+}
+
+.logo {
+    margin-top: -5px;
+    height: 35px;
+    width: auto;
+    padding-right: 10px;
+}
+
+@media (max-width: 640px) { 
+    nav {
+        font-size: 1.7vh;
+    }
+ }

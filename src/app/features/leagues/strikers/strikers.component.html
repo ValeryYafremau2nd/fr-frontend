@@ -1,0 +1,18 @@
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Striker</th>
+        <th>Team</th>
+        <th>Goals</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let striker of strikers; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ striker.name }}</td>
+        <td>{{ striker.team }}</td>
+        <td>{{ striker.goals }}</td>
+      </tr>
+    </tbody>
+  </table>

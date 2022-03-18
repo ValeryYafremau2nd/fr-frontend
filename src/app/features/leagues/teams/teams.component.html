@@ -1,0 +1,17 @@
+<div class="scroll-view">
+    <table class="table">
+        <tr *ngFor="let team of teams">
+            <td style="width:20%"><img style="height: 30px; width: 30px" [src]="team.crestUrl"/></td>
+            <th style="width:20%">{{team.tla}}</th>
+            <td style="width:20%; text-align: center;">{{team.name}}</td>
+            <td style="width:20%; text-align: center;">{{team.area.name}}</td>
+            <td style="width:20%"><app-track
+                [itemId]="team.id"
+                [tracker]="trackTeam.bind(this)"
+                [untracker]="untrackTeam.bind(this)"
+                [tracked]="true"
+                style="float:right"
+              ></app-track></td>
+        </tr>
+    </table>
+</div>

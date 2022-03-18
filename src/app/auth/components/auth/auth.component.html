@@ -1,0 +1,79 @@
+
+<div class="auth-form">
+  <div class="col-xs-12 col-md-offset-3">
+    <!-- <div class="alert alert-danger" *ngIf="error">
+      <p>{{ error }}</p>
+    </div> -->
+    <!-- <app-alert
+      [message]="error"
+      *ngIf="error"
+      (close)="onHandleError()"
+    ></app-alert> -->
+    <form #authForm="ngForm">
+      <div *ngIf="error" class="error">{{ error }}</div>
+      <div class="form-group">
+        <input
+          type="email"
+          id="email"
+          class="form-control"
+          ngModel
+          placeholder="Email"
+          name="email"
+          required
+          email
+        />
+      </div>
+
+      <div class="form-group">
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          ngModel
+          name="password"
+          placeholder="Password"
+          required
+          minlength="6"
+        />
+      </div>
+
+      <div *ngIf="mode === 'signup'" class="form-group">
+        <input
+          type="password"
+          id="confirmPassword"
+          class="form-control"
+          ngModel
+          name="password"
+          placeholder="Confirm password"
+          required
+          minlength="6"
+        />
+      </div>
+      <button type="button" (click)="loginWithGoogle()" style="float:left; margin-right: 10px" class="btn btn-primary">Google OAuth</button>
+      <div [ngSwitch]="mode">
+        <div *ngSwitchCase="'login'">
+         <button
+           class="btn btn-success"
+           type="submit"
+           (click)="login(authForm)"
+         >
+           Sign In
+         </button>
+         <button class="btn btn-link" [routerLink]="'/auth/signup'"> Sign Up </button>
+        </div>
+  
+       <div *ngSwitchCase="'signup'">
+         <button
+           class="btn btn-success"
+           type="submit"
+           (click)="signup(authForm)"
+         >
+           Sign Up
+         </button>
+         <button class="btn btn-link" [routerLink]="'/auth/login'"> Sign In </button>
+       </div>
+     </div>
+      
+    </form>
+  </div>
+</div>
