@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  api: "http://localhost:3001",
+  api: "https://intense-escarpment-13790.herokuapp.com",
 };
