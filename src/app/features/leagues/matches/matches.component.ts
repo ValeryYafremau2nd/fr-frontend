@@ -74,7 +74,7 @@ export class MatchesComponent implements OnInit, OnDestroy {
         );
         this.notFilteredMatches = selectedLeague ? selectedLeague.matches : [];
         this.matchDays = this.applyFilters();
-        if (this.matchDays !== undefined) {
+        if (this.matchDays !== undefined && this.matchDays.length) {
           this.isLoading = false;
         }
       });
@@ -82,7 +82,8 @@ export class MatchesComponent implements OnInit, OnDestroy {
       this.storeSub = this.store.select("favourite").subscribe((favourite) => {
         this.notFilteredMatches = favourite.matches;
         this.matchDays = this.applyFilters();
-        if (this.matchDays !== undefined) {
+        console.log(this.matchDays);
+        if (this.matchDays !== undefined && this.matchDays.length) {
           this.isLoading = false;
         }
       });

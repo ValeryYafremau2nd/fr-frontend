@@ -21,16 +21,19 @@ thead {
     color: white;
 }
 
+
 .scroll-view {    
     position:  fixed;
-    top:  100px;
+    top:  130px;
     width: 100%;
     overflow-y: scroll;
     bottom: 0;
 }
 
 @media (max-width: 640px) { 
-    table {
-        font-size: .8vh;
+    .table td, .table th {
+        font-size: 1.5vh;
+        font-weight: 500;
+        padding: 1px;
     }
  }

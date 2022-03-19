@@ -14,12 +14,19 @@ import { Store } from "@ngrx/store";
 })
 export class TeamsComponent implements OnInit {
   teams: any;
+  isLoading = true;
 
   constructor(private store: Store<any>) {}
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.store.select("favourite").subscribe((favourite) => {
+      // fix
       this.teams = favourite.teams;
+      console.log(favourite.teams);
+      if (this.teams !== undefined && this.teams.length) {
+        this.isLoading = false;
+      }
     });
     this.store.dispatch(new GetFavouriteTeams());
   }

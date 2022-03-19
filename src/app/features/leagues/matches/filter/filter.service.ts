@@ -7,7 +7,7 @@ export class FilterService {
     localStorage.getItem("showFinished") === "true" ? true : false
   );
   showPostponedSubject = new BehaviorSubject(
-    localStorage.getItem("showPostponed") === "true" ? true : false
+    /*localStorage.getItem("showPostponed") === "true" ? true :*/ false
   );
   showTrackedTeamsSubject = new BehaviorSubject(
     localStorage.getItem("showTrackedTeams") === "true" ? true : false

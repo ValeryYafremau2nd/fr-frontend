@@ -29,13 +29,16 @@ export class StandingComponent implements OnInit {
   ngOnInit(): void {
     this.isLoading = true;
     this.storeSub = this.store.select("leagues").subscribe((leagues) => {
+      // fix unsub
       const navState = this.navStateService.getCurrentState();
       const leagueId = navState.league;
       const selectedLeague = leagues.leagues.find(
         (league) => league.id === +leagueId
       );
       this.standings = selectedLeague ? selectedLeague.standings : [];
-      this.isLoading = false;
+      if (this.standings !== undefined) {
+        this.isLoading = false;
+      }
     });
   }
 

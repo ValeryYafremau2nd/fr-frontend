@@ -6,10 +6,10 @@
             (change)="showFinishedFilter()"
             [checked]="showFinishedCheckboxValue"
             >
-            <span style="color: burlywood">Show finished</span>
+            <span style="color: cornsilk">Show finished</span>
           </mat-slide-toggle>
         </div> 
-        <div class="form-group mb-3">
+        <!--<div class="form-group mb-3">
           <mat-slide-toggle
             style
             formControlName="showPostponed"
@@ -18,7 +18,7 @@
             >
             <span style="color: cornsilk">Show postponed</span>
           </mat-slide-toggle>
-        </div> 
+        </div> -->
         <div class="form-group mb-3" *ngIf="isFavourite">
           <mat-slide-toggle
           formControlName="showTrackedTeams"

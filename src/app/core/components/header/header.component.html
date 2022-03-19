@@ -1,6 +1,7 @@
 <!-- Menu -->
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark menu">
-  <a class="main-tab" href="#" style="color: white"> Match Tracker</a>
+  <a class="main-tab" href="#" style="color: white;
+  padding-right: 1.5vw;"> Match Tracker</a>
   <ul *ngIf="isLoggedIn" class="navbar-nav mr-auto">
     <li class="nav-item" [ngClass]="{'active' : !isFavourite && urlRoot !=='notifications/'}">
       <a class="nav-link" routerLink="/leagues">Overview</a>
@@ -8,9 +9,9 @@
     <li class="nav-item" [ngClass]="{'active' : isFavourite}">
       <a class="nav-link" routerLink="/favourite">Tracked</a>
     </li>
-    <li class="nav-item" [ngClass]="{'active' : urlRoot ==='notifications/'}">
+    <!--<li class="nav-item" [ngClass]="{'active' : urlRoot ==='notifications/'}">
       <a class="nav-link"  style="color:darkred" routerLink="/notifications">Notifications</a>
-    </li>
+    </li>-->
   </ul>
   <form class="form-inline" style="float:right" action="#">
     

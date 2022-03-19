@@ -76,7 +76,6 @@ export class AuthComponent implements OnInit, OnDestroy {
     const oauthRes = await this.socialAuthService.signIn(
       GoogleLoginProvider.PROVIDER_ID
     );
-    console.log(oauthRes.id, oauthRes.response.id_token);
     this.authService.loginOauth(oauthRes.id, oauthRes.response.id_token);
   }
 

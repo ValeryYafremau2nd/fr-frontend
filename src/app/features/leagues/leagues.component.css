@@ -47,7 +47,8 @@ button {
 
 .scroll-view {    
     position:  fixed;
-    top:  90px;
+    top:  130px;
     width: 100%;
+    overflow-y: scroll;
     bottom: 0;
 }
