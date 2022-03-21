@@ -1,24 +1,24 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: "app-squad",
-  templateUrl: "./squad.component.html",
-  styleUrls: ["./squad.component.css"],
+  selector: 'app-squad',
+  templateUrl: './squad.component.html',
+  styleUrls: ['./squad.component.css'],
 })
 export class SquadComponent implements OnInit {
   players = [
     {
-      name: "Antonio Zabuli",
+      name: 'Antonio Zabuli',
       age: 26,
       number: 12,
     },
     {
-      name: "Antonio Zabuli",
+      name: 'Antonio Zabuli',
       age: 26,
       number: 12,
     },
     {
-      name: "Antonio Zabuli",
+      name: 'Antonio Zabuli',
       age: 26,
       number: 12,
     },

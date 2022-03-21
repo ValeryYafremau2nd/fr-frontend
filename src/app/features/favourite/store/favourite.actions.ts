@@ -1,24 +1,24 @@
-import { Action } from "@ngrx/store";
+import { Action } from '@ngrx/store';
 
-export const LOAD_MATCHES = "[Favourite] Load mathces";
-export const LOAD_TEAMS = "[Favourite] Load teams";
-export const LOAD_LEAGUES = "[Favourite] Load leagues";
-export const ADD_TEAM = "[Favourite] Add team";
-export const ADD_MATCH = "[Favourite] Add match";
-export const ADD_LEAGUE = "[Favourite] Add league";
-export const TEAM_REMOVED = "[Favourite] Team removed";
-export const MATCH_REMOVED = "[Favourite] Match removed";
-export const LEAGUE_REMOVED = "[Favourite] League removed";
-export const TEAM_ADDED = "[Favourite] Team added";
-export const MATCH_ADDED = "[Favourite] Match added";
-export const LEAGUE_ADDED = "[Favourite] League added";
-export const REMOVE_TEAM = "[Favourite] Remove team";
-export const REMOVE_MATCH = "[Favourite] Remove match";
-export const REMOVE_LEAGUE = "[Favourite] Remove league";
-export const GET_TEAMS = "[Favourite] Get teams";
-export const GET_LEAGUES = "[Favourite] Get leagues";
-export const GET_MATCHES = "[Favourite] Get matches";
-export const CLEAN_STORAGE = "[Favourite] Clean storage";
+export const LOAD_MATCHES = '[Favourite] Load mathces';
+export const LOAD_TEAMS = '[Favourite] Load teams';
+export const LOAD_LEAGUES = '[Favourite] Load leagues';
+export const ADD_TEAM = '[Favourite] Add team';
+export const ADD_MATCH = '[Favourite] Add match';
+export const ADD_LEAGUE = '[Favourite] Add league';
+export const TEAM_REMOVED = '[Favourite] Team removed';
+export const MATCH_REMOVED = '[Favourite] Match removed';
+export const LEAGUE_REMOVED = '[Favourite] League removed';
+export const TEAM_ADDED = '[Favourite] Team added';
+export const MATCH_ADDED = '[Favourite] Match added';
+export const LEAGUE_ADDED = '[Favourite] League added';
+export const REMOVE_TEAM = '[Favourite] Remove team';
+export const REMOVE_MATCH = '[Favourite] Remove match';
+export const REMOVE_LEAGUE = '[Favourite] Remove league';
+export const GET_TEAMS = '[Favourite] Get teams';
+export const GET_LEAGUES = '[Favourite] Get leagues';
+export const GET_MATCHES = '[Favourite] Get matches';
+export const CLEAN_STORAGE = '[Favourite] Clean storage';
 
 export class CleanStorage implements Action {
   readonly type = CLEAN_STORAGE;

@@ -1,49 +1,37 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
-import { League } from "./league.model";
-import { Store } from "@ngrx/store";
-import { Subscription } from "rxjs";
-import { NavStateService, Mode } from "../../core/services/nav-state.service";
-import {
-  AddLeague,
-  RemoveLeague,
-  GetFavouriteLeagues,
-} from "../favourite/store/favourite.actions";
-import { GetAllLeagues } from "./store/leagues.actions";
-// import * as bootbox from 'bootbox';
-// let bootbox;
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
+import { NavStateService, Mode } from '../../core/services/nav-state.service';
+import { AddLeague } from '../favourite/store/favourite.actions';
 
 @Component({
-  selector: "app-leagues",
-  templateUrl: "./leagues.component.html",
-  styleUrls: ["./leagues.component.css"],
+  selector: 'app-leagues',
+  templateUrl: './leagues.component.html',
+  styleUrls: ['./leagues.component.css'],
 })
 export class LeaguesComponent implements OnInit, OnDestroy {
   leagues: any[] = [];
   storeSub: Subscription;
+  isLoading = true;
 
-  constructor(
-    private store: Store<any /*fromApp.AppState*/>,
-    private navStateService: NavStateService
-  ) {}
+  constructor(private store: Store<any /*fromApp.AppState*/>, private navStateService: NavStateService) {}
 
   ngOnInit(): void {
+    this.isLoading = true;
     const navState = this.navStateService.getCurrentState();
 
-    console.log(navState.mode);
     if (navState.mode === Mode.Leagues) {
       this.storeSub = this.store.subscribe((state) => {
         // fix unsub
-        const trackedLeagues = state.favourite.leagues.map(
-          (league) => league.id
-        );
-        console.log(state);
+        this.isLoading = false;
+        const trackedLeagues = state.favourite.leagues.map((league) => league.id);
         this.leagues = state.leagues.leagues.map((league) => ({
           ...league,
           tracked: trackedLeagues.includes(league.id),
         }));
       });
     } else {
-      this.storeSub = this.store.select("favourite").subscribe((favourite) => {
+      this.storeSub = this.store.select('favourite').subscribe((favourite) => {
         this.leagues = favourite.leagues.map((league) => ({
           ...league,
           tracked: true,
@@ -53,17 +41,10 @@ export class LeaguesComponent implements OnInit, OnDestroy {
   }
 
   track($event, league: any) {
-    this.store.dispatch(
-      new AddLeague({ id: league.id, logo: league.logo, title: league.title })
-    );
+    this.store.dispatch(new AddLeague({ id: league.id, logo: league.logo, title: league.title }));
   }
 
   untrack($event, league: any) {
-    /*bootbox.confirm('Do you realy want to untrack this?', (isConfirmed) => {
-      if (isConfirmed) {
-        this.store.dispatch(new RemoveLeague(league.id));
-      }
-    });*/
   }
 
   ngOnDestroy(): void {

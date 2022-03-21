@@ -1,47 +1,43 @@
-import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
-import { LeaguesComponent } from "./leagues.component";
-import { TeamsComponent } from "./teams/teams.component";
-import { MatchesComponent } from "./matches/matches.component";
-import { StandingComponent } from "./standing/standing.component";
-import { CommonModule } from "@angular/common";
-import { StrikersComponent } from "./strikers/strikers.component";
-import { SquadComponent } from "./teams/squad/squad.component";
-import { AuthGuard } from "../../auth/guardians/auth.guard";
-import { LeagueResolverService } from "./league-resolver.service";
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { LeaguesComponent } from './leagues.component';
+import { TeamsComponent } from './teams/teams.component';
+import { MatchesComponent } from './matches/matches.component';
+import { StandingComponent } from './standing/standing.component';
+import { CommonModule } from '@angular/common';
+import { StrikersComponent } from './strikers/strikers.component';
+import { SquadComponent } from './teams/squad/squad.component';
+import { AuthGuard } from '../../auth/guardians/auth.guard';
+import { LeagueResolverService } from './league-resolver.service';
 
 const routes: Routes = [
   {
-    path: "",
+    path: '',
     component: LeaguesComponent,
-    pathMatch: "full",
+    pathMatch: 'full',
     canActivate: [AuthGuard],
     resolve: [LeagueResolverService],
-    runGuardsAndResolvers: "always",
+    runGuardsAndResolvers: 'always',
   },
   {
-    path: ":league/matches",
+    path: ':league/matches',
     component: MatchesComponent,
-    data: { animation: "MatchesPage" },
+    data: { animation: 'MatchesPage' },
     resolve: [LeagueResolverService],
-    // resolve: [RecipesResolverService]
   },
   {
-    path: ":league/standings",
+    path: ':league/standings',
     component: StandingComponent,
-    data: { animation: "StandingsPage" },
+    data: { animation: 'StandingsPage' },
     resolve: [LeagueResolverService],
-    // resolve: [RecipesResolverService]
   },
   {
-    path: ":league/strikers",
+    path: ':league/strikers',
     component: StrikersComponent,
-    // resolve: [RecipesResolverService]
   },
   {
-    path: ":league/teams/:team",
+    path: ':league/teams/:team',
     component: SquadComponent,
-    // resolve: [RecipesResolverService]
   },
 ];
 

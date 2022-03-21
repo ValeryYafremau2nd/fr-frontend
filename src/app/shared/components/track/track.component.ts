@@ -1,9 +1,9 @@
-import { Component, Input, EventEmitter, Output } from "@angular/core";
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
-  selector: "app-track",
-  templateUrl: "./track.component.html",
-  styleUrls: ["./track.component.css"],
+  selector: 'app-track',
+  templateUrl: './track.component.html',
+  styleUrls: ['./track.component.css'],
 })
 export class TrackComponent {
   @Input() tracked: boolean = false;

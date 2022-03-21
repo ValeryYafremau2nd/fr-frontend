@@ -1,5 +1,4 @@
-// import { Recipe } from '../recipe.model';
-import * as NotificationActions from "./notification.actions";
+import * as NotificationActions from './notification.actions';
 
 export interface State {
   notifications: Set<any>;
@@ -12,7 +11,6 @@ const initialState: State = {
 export function notificationReducer(state = initialState, action: any) {
   switch (action.type) {
     case NotificationActions.NOTIFICATIONS_LOADED: {
-      console.log(action.payload);
       return {
         notifications: new Set(action.payload),
       };

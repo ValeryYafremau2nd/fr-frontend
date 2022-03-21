@@ -4,30 +4,50 @@ table {
     background-color: #f7f7f7;
 }
 
+tr {
+    background-color: cornsilk;
+}
+
 .match-day {
     text-align: center;
-    /*font-weight: 500;*/
     font-size: large;
     margin: 20px 0 10px;
 }
 .finished {
-    background-color: cornsilk;
+    background-color: #f7f7f7;
 }
 .postponed {
-    background-color: cornsilk;
+    background-color: #f7f7f7;
 }
 .tracked-team {
     color: white;
     background-color: darkcyan;
-    /* font-weight: 600; */
 }
 
-.scroll-view {    
-    position:  fixed;
-    top:  130px;
-    width: 100%;
-    overflow-y: scroll;
-    bottom: 0;
+.col-data{
+    width: 10%;
+}
+.col-home-team {
+    width: 28%;
+    text-align: right;
+}
+.col-home-team-score {
+    width: 5%;
+    text-align: right;
+}
+.col-separator {
+    width: 4%;
+}
+.col-away-teamscore {
+    width: 5%;
+    text-align: left;
+}
+.col-away-team {
+    width: 28%;
+    text-align: left;
+}
+.col-track {
+    width: 10%;
 }
 
 @media (max-width: 640px) { 

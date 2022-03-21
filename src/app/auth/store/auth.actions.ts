@@ -1,12 +1,12 @@
-import { Action } from "@ngrx/store";
+import { Action } from '@ngrx/store';
 
-export const LOGIN = "[Auth] Login";
-export const LOGIN_OAUTH = "[Auth] Login Oauth";
-export const SIGNUP = "[Auth] SignUp";
-export const LOGOUT = "[Auth] Logout";
-export const LOGGEDIN = "[Auth] Loggedin";
-export const LOGGEDOUT = "[Auth] LoggedOut";
-export const ERROR = "[Auth] Error";
+export const LOGIN = '[Auth] Login';
+export const LOGIN_OAUTH = '[Auth] Login Oauth';
+export const SIGNUP = '[Auth] SignUp';
+export const LOGOUT = '[Auth] Logout';
+export const LOGGEDIN = '[Auth] Loggedin';
+export const LOGGEDOUT = '[Auth] LoggedOut';
+export const ERROR = '[Auth] Error';
 
 export class Error implements Action {
   readonly type = ERROR;

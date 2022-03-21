@@ -1,31 +1,27 @@
-import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
-import { LeaguesComponent } from "../leagues/leagues.component";
-import { TeamsComponent } from "../leagues/teams/teams.component";
-import { MatchesComponent } from "../leagues/matches/matches.component";
-import { FavouriteLeaguesResolverService } from "./services/favourite-leagues-resolver.service";
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { TeamsComponent } from '../leagues/teams/teams.component';
+import { MatchesComponent } from '../leagues/matches/matches.component';
+import { FavouriteLeaguesResolverService } from './services/favourite-leagues-resolver.service';
 
 const routes: Routes = [
   {
-    path: "",
-    redirectTo: "/favourite/matches",
-    pathMatch: "full",
-    // canActivate: [AuthGuard],
+    path: '',
+    redirectTo: '/favourite/matches',
+    pathMatch: 'full',
   },
   {
-    path: "teams",
+    path: 'teams',
     component: TeamsComponent,
-    data: { animation: "FavouriteTeamsPage" },
-    // resolve: [RecipesResolverService]
+    data: { animation: 'FavouriteTeamsPage' },
   },
   {
-    path: "matches",
+    path: 'matches',
     component: MatchesComponent,
-    data: { animation: "FavouriteMatchesPage" },
-    // resolve: [RecipesResolverService]
+    data: { animation: 'FavouriteMatchesPage' },
   },
   {
-    path: "leagues",
+    path: 'leagues',
     resolve: [FavouriteLeaguesResolverService],
   },
 ];

@@ -1,6 +1,6 @@
-import { NgModule } from "@angular/core";
-import { RouterModule } from "@angular/router";
-import { NotificationResolverService } from "./notification-resolver.service";
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { NotificationResolverService } from './notification-resolver.service';
 
 @NgModule({
   imports: [],

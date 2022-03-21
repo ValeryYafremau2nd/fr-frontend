@@ -1,25 +1,25 @@
-import { Injectable } from "@angular/core";
-import { Router } from "@angular/router";
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 export const enum Mode {
-  Leagues = "leagues",
-  Favourite = "favourite",
+  Leagues = 'leagues',
+  Favourite = 'favourite',
 }
 
 export const enum Tab {
-  Leagues = "leagues",
-  Matches = "matches",
-  Teams = "teams",
-  Strikers = "strikers",
-  Standings = "standings",
+  Leagues = 'leagues',
+  Matches = 'matches',
+  Teams = 'teams',
+  Strikers = 'strikers',
+  Standings = 'standings',
 }
 
-@Injectable({ providedIn: "root" })
+@Injectable({ providedIn: 'root' })
 export class NavStateService {
   constructor(private router: Router) {}
 
   getCurrentState() {
-    const uri = this.router.routerState.snapshot.url.split("/");
+    const uri = this.router.routerState.snapshot.url.split('/');
     const isFavourite = Mode.Leagues !== uri[1];
     return {
       mode: uri[1],

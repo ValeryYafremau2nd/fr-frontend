@@ -1,0 +1,8 @@
+.scroll-view {    
+    position:  fixed;
+    top:  130px;
+    width: 100%;
+    overflow-y: scroll;
+    bottom: 0;
+    text-align: center;
+}

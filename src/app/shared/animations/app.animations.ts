@@ -1,97 +1,89 @@
-import {
-  trigger,
-  transition,
-  style,
-  query,
-  group,
-  animateChild,
-  animate,
-} from "@angular/animations";
+import { trigger, transition, style, query, group, animateChild, animate } from '@angular/animations';
 
-export const slideInAnimation = trigger("routeAnimations", [
-  transition("MatchesPage => StandingsPage", [
-    query(":enter, :leave", [
+export const slideInAnimation = trigger('routeAnimations', [
+  transition('MatchesPage => StandingsPage', [
+    query(':enter, :leave', [
       style({
-        position: "absolute",
+        position: 'absolute',
         top: 0,
         left: 0,
-        width: "100%",
+        width: '100%',
       }),
     ]),
-    query(":enter", [style({ left: "-100%" })]),
-    query(":leave", animateChild()),
+    query(':enter', [style({ left: '-100%' })]),
+    query(':leave', animateChild()),
     group([
-      query(":leave", [animate("300ms ease-out", style({ left: "100%" }))]),
-      query(":enter", [animate("300ms ease-out", style({ left: "0%" }))]),
+      query(':leave', [animate('300ms ease-out', style({ left: '100%' }))]),
+      query(':enter', [animate('300ms ease-out', style({ left: '0%' }))]),
     ]),
-    query(":enter", animateChild()),
+    query(':enter', animateChild()),
   ]),
-  transition("StandingsPage => MatchesPage", [
-    query(":enter, :leave", [
+  transition('StandingsPage => MatchesPage', [
+    query(':enter, :leave', [
       style({
-        position: "absolute",
+        position: 'absolute',
         top: 0,
         left: 0,
-        width: "100%",
+        width: '100%',
       }),
     ]),
-    query(":enter", [style({ left: "100%" })]),
-    query(":leave", animateChild()),
+    query(':enter', [style({ left: '100%' })]),
+    query(':leave', animateChild()),
     group([
-      query(":leave", [animate("300ms ease-out", style({ left: "-100%" }))]),
-      query(":enter", [animate("300ms ease-out", style({ left: "0%" }))]),
+      query(':leave', [animate('300ms ease-out', style({ left: '-100%' }))]),
+      query(':enter', [animate('300ms ease-out', style({ left: '0%' }))]),
     ]),
-    query(":enter", animateChild()),
+    query(':enter', animateChild()),
   ]),
-  transition("FavouriteTeamsPage => FavouriteMatchesPage", [
-    query(":enter, :leave", [
+  transition('FavouriteTeamsPage => FavouriteMatchesPage', [
+    query(':enter, :leave', [
       style({
-        position: "absolute",
+        position: 'absolute',
         top: 0,
         left: 0,
-        width: "100%",
+        width: '100%',
       }),
     ]),
-    query(":enter", [style({ left: "-100%" })]),
-    query(":leave", animateChild()),
+    query(':enter', [style({ left: '-100%' })]),
+    query(':leave', animateChild()),
     group([
-      query(":leave", [animate("300ms ease-out", style({ left: "100%" }))]),
-      query(":enter", [animate("300ms ease-out", style({ left: "0%" }))]),
+      query(':leave', [animate('300ms ease-out', style({ left: '100%' }))]),
+      query(':enter', [animate('300ms ease-out', style({ left: '0%' }))]),
     ]),
-    query(":enter", animateChild()),
+    query(':enter', animateChild()),
   ]),
-  transition("FavouriteMatchesPage => FavouriteTeamsPage", [
-    query(":enter, :leave", [
+  transition('FavouriteMatchesPage => FavouriteTeamsPage', [
+    query(':enter, :leave', [
       style({
-        position: "absolute",
+        position: 'absolute',
         top: 0,
         left: 0,
-        width: "100%",
+        width: '100%',
       }),
     ]),
-    query(":enter", [style({ left: "100%" })]),
-    query(":leave", animateChild()),
+    query(':enter', [style({ left: '100%' })]),
+    query(':leave', animateChild()),
     group([
-      query(":leave", [animate("300ms ease-out", style({ left: "-100%" }))]),
-      query(":enter", [animate("300ms ease-out", style({ left: "0%" }))]),
+      query(':leave', [animate('300ms ease-out', style({ left: '-100%' }))]),
+      query(':enter', [animate('300ms ease-out', style({ left: '0%' }))]),
     ]),
-    query(":enter", animateChild()),
+    query(':enter', animateChild()),
   ]),
-  transition("FavouritePages <=> OverviewPages", [
-    query(":enter, :leave", [
+  transition('FavouritePages <=> OverviewPages', [
+    query(':enter, :leave', [
       style({
-        position: "absolute",
+        position: 'absolute',
         top: 0,
         left: 0,
-        width: "100%",
+        width: '100%',
       }),
     ]),
-    query(":enter", [style({ left: "100%" })]),
-    query(":leave", animateChild()),
+    query(':enter', [style({ left: '100%' })]),
+    query(':leave', animateChild()),
     group([
-      query(":leave", [animate("300ms ease-out", style({ left: "-100%" }))]),
-      query(":enter", [animate("300ms ease-out", style({ left: "0%" }))]),
+      query(':leave', [animate('300ms ease-out', style({ left: '-100%' }))]),
+      query(':enter', [animate('300ms ease-out', style({ left: '0%' }))]),
     ]),
-    query(":enter", animateChild()),
+    query(':enter', animateChild()),
   ]),
 ]);

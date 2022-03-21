@@ -1,8 +1,10 @@
 .lds-ring {
   display: inline-block;
-  position: relative;
+  position: fixed;
   width: 64px;
   height: 64px;
+  margin-left: -32px;
+  top: 45%;
 }
 .lds-ring div {
   box-sizing: border-box;

@@ -1,23 +1,19 @@
-import { Component, OnInit, Injectable, OnDestroy } from "@angular/core";
-import { MatchDay } from "./match.model";
-import { Store } from "@ngrx/store";
-import { NavStateService, Mode } from "src/app/core/services/nav-state.service";
-import { Subscribable, Subscription } from "rxjs";
-import { GetMatches } from "../store/leagues.actions";
-import {
-  GetFavouriteMathes,
-  AddTeam,
-  AddMatch,
-  RemoveMatch,
-} from "../../favourite/store/favourite.actions";
-import { FilterService } from "./filter/filter.service";
+import { Component, OnInit, Injectable, OnDestroy } from '@angular/core';
+import { MatchDay } from './match.model';
+import { Store } from '@ngrx/store';
+import { NavStateService, Mode } from 'src/app/core/services/nav-state.service';
+import { Subscribable, Subscription } from 'rxjs';
+import { GetMatches } from '../store/leagues.actions';
+import { GetFavouriteMathes, AddTeam, AddMatch, RemoveMatch } from '../../favourite/store/favourite.actions';
+import { FilterService } from './filter/filter.service';
+import { skip } from 'rxjs/operators';
 
 @Component({
-  selector: "app-matches",
-  templateUrl: "./matches.component.html",
-  styleUrls: ["./matches.component.css"],
+  selector: 'app-matches',
+  templateUrl: './matches.component.html',
+  styleUrls: ['./matches.component.css'],
 })
-@Injectable({ providedIn: "root" })
+@Injectable({ providedIn: 'root' })
 export class MatchesComponent implements OnInit, OnDestroy {
   matchDays: MatchDay[] = [];
   private storeSub: Subscription;
@@ -33,7 +29,7 @@ export class MatchesComponent implements OnInit, OnDestroy {
     private filterService: FilterService
   ) {
     const navState = this.navStateService.getCurrentState();
-    if (navState.mode === "leagues") {
+    if (navState.mode === 'leagues') {
       store.dispatch(new GetMatches(navState.league));
       return;
     }
@@ -64,29 +60,30 @@ export class MatchesComponent implements OnInit, OnDestroy {
 
     const navState = this.navStateService.getCurrentState();
     this.isLoading = true;
+    this.matchDays = undefined;
 
     if (navState.mode === Mode.Leagues) {
-      this.storeSub = this.store.select("leagues").subscribe((leagues) => {
+      this.storeSub = this.store.select('leagues').subscribe((leagues) => {
         const navState = this.navStateService.getCurrentState();
         const leagueId = navState.league;
-        const selectedLeague = leagues.leagues.find(
-          (league) => league.id === +leagueId
-        );
+        const selectedLeague = leagues.leagues.find((league) => league.id === +leagueId);
         this.notFilteredMatches = selectedLeague ? selectedLeague.matches : [];
         this.matchDays = this.applyFilters();
-        if (this.matchDays !== undefined && this.matchDays.length) {
+        if (this.matchDays !== undefined) {
           this.isLoading = false;
         }
       });
     } else {
-      this.storeSub = this.store.select("favourite").subscribe((favourite) => {
-        this.notFilteredMatches = favourite.matches;
-        this.matchDays = this.applyFilters();
-        console.log(this.matchDays);
-        if (this.matchDays !== undefined && this.matchDays.length) {
-          this.isLoading = false;
-        }
-      });
+      this.storeSub = this.store
+        .select('favourite')
+        .pipe(skip(1))
+        .subscribe((favourite) => {
+          this.notFilteredMatches = favourite.matches;
+          this.matchDays = this.applyFilters();
+          if (this.matchDays !== undefined) {
+            this.isLoading = false;
+          }
+        });
     }
   }
 
@@ -101,23 +98,17 @@ export class MatchesComponent implements OnInit, OnDestroy {
     const filteredMatchDays = this.notFilteredMatches.map((matchDay) => {
       const copy = { ...matchDay };
       copy.matches = copy.matches.filter((match) => {
-        const isFinished = match.status === "FINISHED";
-        const isPostponed = match.status === "POSTPONED";
+        const isFinished = match.status === 'FINISHED';
+        const isPostponed = match.status === 'POSTPONED';
         const trackedTeam = match.homeTeam.tracked || match.awayTeam.tracked;
-        const filteredByTeam = this.showTrackedTeamsSubject
-          ? true
-          : match.tracked || !trackedTeam;
+        const filteredByTeam = this.showTrackedTeamsSubject ? true : match.tracked || !trackedTeam;
         const filteredByStatus = this.showFinishedSubject ? true : !isFinished;
-        const filteredPOstponed = this.showPostponedSubject
-          ? true
-          : !isPostponed;
+        const filteredPOstponed = this.showPostponedSubject ? true : !isPostponed;
         return filteredByTeam && filteredByStatus && filteredPOstponed;
       });
       return copy;
     });
-    const cleanedEmptyDays = filteredMatchDays.filter(
-      (matchDay) => matchDay.matches.length
-    );
+    const cleanedEmptyDays = filteredMatchDays.filter((matchDay) => matchDay.matches.length);
     return cleanedEmptyDays;
   }
 }

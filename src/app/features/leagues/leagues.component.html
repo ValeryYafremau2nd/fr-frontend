@@ -1,4 +1,5 @@
-<div class="scroll-view">
+<scroll-view>
+    <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
 <div class="leagues-box">
 <div *ngFor="let league of leagues" class="league-container">
     <div class="league-logo" [routerLink]="'/leagues/' + league.id + '/standings'">
@@ -12,4 +13,4 @@
     </div>-->
 </div>
 </div>
-</div>
+</scroll-view>

@@ -1,11 +1,11 @@
-import { Action } from "@ngrx/store";
+import { Action } from '@ngrx/store';
 
-export const LOAD_NOTIFICATIONS = "[Notifications] Load notifications";
-export const ADD_NOTIFICATION = "[Notifications] Add notification";
-export const REMOVE_NOTIFICATION = "[Notifications] Remove notification";
-export const NOTIFICATIONS_LOADED = "[Notifications] lodaded";
-export const NOTIFICATION_DELETED = "[Notifications] deleted";
-export const NOTIFICATION_ADDED = "[Notifications] added";
+export const LOAD_NOTIFICATIONS = '[Notifications] Load notifications';
+export const ADD_NOTIFICATION = '[Notifications] Add notification';
+export const REMOVE_NOTIFICATION = '[Notifications] Remove notification';
+export const NOTIFICATIONS_LOADED = '[Notifications] lodaded';
+export const NOTIFICATION_DELETED = '[Notifications] deleted';
+export const NOTIFICATION_ADDED = '[Notifications] added';
 
 export class LoadNotifications implements Action {
   readonly type = LOAD_NOTIFICATIONS;

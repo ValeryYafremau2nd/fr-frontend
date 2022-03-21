@@ -1,5 +1,4 @@
-// import { Recipe } from '../recipe.model';
-import * as LeaguesActions from "./leagues.actions";
+import * as LeaguesActions from './leagues.actions';
 
 /*export interface State {
   // recipes: Recipe[];
@@ -15,9 +14,7 @@ export function leaguesReducer(
   switch (action.type) {
     case LeaguesActions.SET_MATCHES:
       const newStateWithMatches = { ...state };
-      newStateWithMatches.leagues = [
-        { id: action.payload.data[0].competitionId },
-      ];
+      newStateWithMatches.leagues = [{ id: action.payload.data[0].competitionId }];
       const league1 = newStateWithMatches.leagues.find(
         (leagues) => leagues.id === action.payload.data[0].competitionId
       );
@@ -27,9 +24,7 @@ export function leaguesReducer(
     case LeaguesActions.SET_STANDINGS:
       const newState = { ...state };
       newState.leagues = [{ id: action.payload[0].competitionId }];
-      const league = newState.leagues.find(
-        (leagues) => leagues.id === action.payload[0].competitionId
-      );
+      const league = newState.leagues.find((leagues) => leagues.id === action.payload[0].competitionId);
       league.standings = action.payload;
       return newState;
 

@@ -66,22 +66,6 @@ export class AuthEffects {
     map((res: any) => {
       localStorage.setItem("fr_token", res.token);
 
-      // notifications
-      this.swPush
-        .requestSubscription({
-          serverPublicKey:
-            "BCp1KVN_hl1WZaolVgEjEP_3dZWa3VmQVdswYq8vRT5eGnERgnJngwZEc-jR5SqqekpzHeFkCYkcaiHbTXpkr_Q",
-        })
-        .then((sub) => {
-          this.http.post<any[]>(
-            environment.api + "/subscribe",
-            JSON.stringify(sub)
-          );
-        })
-        .catch((err) =>
-          console.error("Could not subscribe to notifications", err)
-        );
-
       if (res.error) {
         return new Auth.Error(res.error.error);
       }
@@ -123,22 +107,6 @@ export class AuthEffects {
     }),
     map((res: any) => {
       localStorage.setItem("fr_token", res.token);
-
-      // notifications
-      this.swPush
-        .requestSubscription({
-          serverPublicKey:
-            "BCp1KVN_hl1WZaolVgEjEP_3dZWa3VmQVdswYq8vRT5eGnERgnJngwZEc-jR5SqqekpzHeFkCYkcaiHbTXpkr_Q",
-        })
-        .then((sub) => {
-          this.http.post<any[]>(
-            environment.api + "/subscribe",
-            JSON.stringify(sub)
-          );
-        })
-        .catch((err) =>
-          console.error("Could not subscribe to notifications", err)
-        );
 
       if (res.error) {
         return new Auth.Error(res.error.error);

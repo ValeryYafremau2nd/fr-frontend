@@ -5,6 +5,20 @@ nav {
     top: 0px;
     padding-left: 10px !important;
 }
+
+form {
+    float: right;
+}
+
+.home-link {
+    padding: 1.7vw;
+    background-color: red;
+    color:white !important;
+    text-decoration: none;
+    font-family: Tahpma, Arial, Helvetica, sans-serif !important;
+    font-size: 20px !important;
+}
+
 nav ul {
     flex-direction: row;
 }
@@ -16,14 +30,7 @@ nav ul li {
     top: 50px;
     font-weight: 500;
     border-bottom: solid 2px;
-}
-.menu > a {
-}
-.main-tab {
-    color:darkcyan !important;
-    text-decoration: none;
-    font-family: fantasy !important;
-    font-size: 20px !important;
+    justify-content: initial;
 }
 
 .logo {

@@ -1,9 +1,9 @@
 
-<div class="scroll-view" style="text-align: center;">
+<scroll-view>
   <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
 <table *ngFor="let standing of standings" class="table">
     <thead>
-      <tr *ngIf="standing._id"><td colspan=8 align="center" style="background-color: white; font-weight: bolder; color: green; padding: 30px 0 10px; border: none">{{ standing._id.replace('_', ' ') }}</td></tr>
+      <tr *ngIf="standing._id"><td colspan=8 align="center" class="standing-header">{{ standing._id.replace('_', ' ') }}</td></tr>
       <tr>
         <th>#</th>
         <th>Team</th>
@@ -24,7 +24,7 @@
         <td>{{ position.draw }}</td>
         <td>{{ position.lost }}</td>
         <td>{{ position.points }}</td>
-        <td style="width:15%;text-align: center;"><app-track
+        <td class="col-track"><app-track
             [itemId]="position.team.id"
             [tracker]="trackTeam.bind(this)"
             [untracker]="untrackTeam.bind(this)"
@@ -33,4 +33,4 @@
       </tr>
     </tbody>
   </table>
-</div>
+</scroll-view>

@@ -1,18 +1,18 @@
 <app-filter></app-filter>
-<div class="scroll-view" style="text-align: center;">
+<scroll-view>
   <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
 <div *ngFor="let matchDay of matchDays">
   <div class="match-day">{{ matchDay._id | date }}</div>
   <table class="table">
     <tbody>
       <tr [ngClass]="{'finished': match.status === 'FINISHED', 'postponed': match.status === 'POSTPONED'}" *ngFor="let match of matchDay.matches">
-        <th style="width: 10%;">{{ match.utcDate | date:'shortTime' }}</th>
-        <td style="width: 28%; text-align: right;" [ngClass]="{'tracked-team': match.homeTeam.tracked}">{{ match.homeTeam.name }}</td>
-        <td style="width: 5%; text-align: right;">{{ match.score.fullTime.homeTeam }}</td>
-        <td style="width: 4%;">:</td>
-        <td style="width: 5%; text-align: left;">{{ match.score.fullTime.awayTeam }}</td>
-        <td style="width: 28%; text-align: left;" [ngClass]="{'tracked-team': match.awayTeam.tracked}">{{ match.awayTeam.name }}</td>
-        <td style="width: 10%;"><app-track
+        <th class="col-date">{{ match.utcDate | date:'shortTime' }}</th>
+        <td class="col-home-team" [ngClass]="{'tracked-team': match.homeTeam.tracked}">{{ match.homeTeam.name }}</td>
+        <td class="col-home-team-score">{{ match.score.fullTime.homeTeam }}</td>
+        <td class="col-separator">:</td>
+        <td class="col-away-team-score">{{ match.score.fullTime.awayTeam }}</td>
+        <td class="col-away-team" [ngClass]="{'tracked-team': match.awayTeam.tracked}">{{ match.awayTeam.name }}</td>
+        <td class="col-track"><app-track
           [itemId]="match.id"
           [tracker]="trackMatch.bind(this)"
           [untracker]="untrackMatch.bind(this)"
@@ -23,4 +23,4 @@
     </tbody>
   </table>
 </div>
-</div>
+</scroll-view>

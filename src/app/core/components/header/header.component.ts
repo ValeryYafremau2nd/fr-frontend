@@ -1,27 +1,21 @@
-import { Component, OnInit, Injectable } from "@angular/core";
-import { Location } from "@angular/common";
-import {
-  ActivatedRoute,
-  Router,
-  NavigationStart,
-  Event,
-  NavigationEnd,
-} from "@angular/router";
-import { NavStateService, Mode } from "../../services/nav-state.service";
-import { Store } from "@ngrx/store";
-import { Logout } from "../../../auth/store/auth.actions";
+import { Component, OnInit, Injectable } from '@angular/core';
+import { Location } from '@angular/common';
+import { ActivatedRoute, Router, Event, NavigationEnd } from '@angular/router';
+import { NavStateService, Mode } from '../../services/nav-state.service';
+import { Store } from '@ngrx/store';
+import { Logout } from '../../../auth/store/auth.actions';
 
 @Component({
-  selector: "app-header",
-  templateUrl: "./header.component.html",
-  styleUrls: ["./header.component.css"],
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.css'],
 })
-@Injectable({ providedIn: "root" })
+@Injectable({ providedIn: 'root' })
 export class HeaderComponent implements OnInit {
   isVisible: boolean = false;
   isFavourite: boolean = false;
-  urlRoot: string = "/favourite";
-  tab: string = "matches";
+  urlRoot: string = '/favourite';
+  tab: string = 'matches';
   isLoggedIn: boolean = false;
 
   constructor(
@@ -33,7 +27,7 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.store.select("auth").subscribe((auth: any) => {
+    this.store.select('auth').subscribe((auth: any) => {
       this.isLoggedIn = auth.auth;
     });
     this.router.events.subscribe((event: Event) => {
@@ -41,7 +35,7 @@ export class HeaderComponent implements OnInit {
         const navState = this.navStateService.getCurrentState();
         this.isVisible = navState.mode === Mode.Favourite || !!navState.league;
         this.isFavourite = navState.mode === Mode.Favourite;
-        this.urlRoot = navState.mode + "/" + (navState.league || "");
+        this.urlRoot = navState.mode + '/' + (navState.league || '');
         this.tab = navState.tab;
       }
     });

@@ -1,8 +1,7 @@
-// import { Recipe } from '../recipe.model';
-import * as AuthActions from "./auth.actions";
+import * as AuthActions from './auth.actions';
 
 const initState = {
-  token: localStorage.getItem("fr_token"),
+  token: localStorage.getItem('fr_token'),
   exp: 0,
   user: {},
   auth: true,
@@ -19,7 +18,7 @@ export function authReducer(
     case AuthActions.ERROR:
       return { ...action.payload, error: action.payload };
     case AuthActions.LOGGEDOUT:
-      localStorage.removeItem("fr_token");
+      localStorage.removeItem('fr_token');
       return { ...initState, auth: false };
     default:
       return state;

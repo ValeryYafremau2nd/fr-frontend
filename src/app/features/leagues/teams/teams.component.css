@@ -4,12 +4,15 @@ table {
     margin: auto;
 }
 
-.scroll-view {    
-    position:  fixed;
-    top:  130px;
-    width: 100%;
-    overflow-y: scroll;
-    bottom: 0;
+.team-col {
+    width: 20%;
+}
+.col-center {
+    text-align: center;
+}
+
+.team-logo {
+    height: 30px; width: 30px
 }
 
 @media (max-width: 640px) { 

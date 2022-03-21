@@ -1,10 +1,10 @@
-import { Action } from "@ngrx/store";
+import { Action } from '@ngrx/store';
 
-export const TRACK_LEAGUE = "[Leagues] Track";
-export const UNTRACK_LEAGUE = "[Leagues] Untrack";
-export const GET_STRIKERS = "[Leagues] Get strikers";
-export const GET_LEAGUES = "[Leagues] Get all";
-export const SET_LEAGUES = "[Leagues] Set all";
+export const TRACK_LEAGUE = '[Leagues] Track';
+export const UNTRACK_LEAGUE = '[Leagues] Untrack';
+export const GET_STRIKERS = '[Leagues] Get strikers';
+export const GET_LEAGUES = '[Leagues] Get all';
+export const SET_LEAGUES = '[Leagues] Set all';
 
 export class SetAllLeagues implements Action {
   readonly type = SET_LEAGUES;
@@ -36,15 +36,10 @@ export class GetStrikers implements Action {
   constructor(public payload: number) {}
 }
 
-export type LeaguesActions =
-  | TrackLeague
-  | UntrackLeague
-  | GetStrikers
-  | GetAllLeagues
-  | SetAllLeagues;
+export type LeaguesActions = TrackLeague | UntrackLeague | GetStrikers | GetAllLeagues | SetAllLeagues;
 
-export const GET_STANDINGS = "[Standing] Get";
-export const SET_STANDINGS = "[Standing] Set";
+export const GET_STANDINGS = '[Standing] Get';
+export const SET_STANDINGS = '[Standing] Set';
 
 export class GetStandings implements Action {
   readonly type = GET_STANDINGS;
@@ -58,8 +53,8 @@ export class SetStandings implements Action {
   constructor(public payload: any) {}
 }
 
-export const GET_MATCHES = "[Matches] Get";
-export const SET_MATCHES = "[Matches] Set";
+export const GET_MATCHES = '[Matches] Get';
+export const SET_MATCHES = '[Matches] Set';
 
 export class GetMatches implements Action {
   readonly type = GET_MATCHES;
