@@ -1,5 +1,6 @@
 button {
     font-size: 1vw;
+    width: 100%;
 }
 
 @media (max-width: 1024px) { 

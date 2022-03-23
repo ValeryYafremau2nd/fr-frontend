@@ -5,10 +5,11 @@ import { take, exhaustMap, catchError, map } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { throwError } from 'rxjs';
 import { Router } from '@angular/router';
+import { AppState } from '../../core/store/app.reducer';
 
 @Injectable()
 export class AuthInterceptorService implements HttpInterceptor {
-  constructor(private store: Store<any>, private router: Router) {}
+  constructor(private store: Store<AppState>, private router: Router) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     return this.store.select('auth').pipe(

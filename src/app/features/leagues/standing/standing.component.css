@@ -7,8 +7,9 @@
 }
 table {
     background-color: #f7f7f7;
-    margin: 0 3%;
+    margin: auto;
     width: 94%;
+    max-width: 1200px;
 }
 th {
     border-top: none;
@@ -16,6 +17,8 @@ th {
 tr {
     text-align: center;
 }
+
+tbody tr:nth-child(odd) {background: floralwhite}
 thead {
     background-color: darkcyan;
     color: white;
@@ -30,6 +33,7 @@ thead {
 
 .col-track {
     text-align: center;
+    width:15%
 }
 
 @media (max-width: 640px) { 

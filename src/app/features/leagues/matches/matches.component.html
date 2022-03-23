@@ -6,7 +6,8 @@
   <table class="table">
     <tbody>
       <tr [ngClass]="{'finished': match.status === 'FINISHED', 'postponed': match.status === 'POSTPONED'}" *ngFor="let match of matchDay.matches">
-        <th class="col-date">{{ match.utcDate | date:'shortTime' }}</th>
+        <td class="col-competition"><img [src]="match.emblemUrl"/></td>
+        <th class="col-date">{{ match.utcDate | date:'HH:mm' }}</th>
         <td class="col-home-team" [ngClass]="{'tracked-team': match.homeTeam.tracked}">{{ match.homeTeam.name }}</td>
         <td class="col-home-team-score">{{ match.score.fullTime.homeTeam }}</td>
         <td class="col-separator">:</td>
@@ -17,7 +18,7 @@
           [tracker]="trackMatch.bind(this)"
           [untracker]="untrackMatch.bind(this)"
           [tracked]="match.tracked"
-          style="float:right"
+          style="float:right;width:100%"
         ></app-track></td>
       </tr>
     </tbody>

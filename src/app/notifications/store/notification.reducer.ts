@@ -8,6 +8,8 @@ const initialState: State = {
   notifications: new Set(),
 };
 
+// STALE
+
 export function notificationReducer(state = initialState, action: any) {
   switch (action.type) {
     case NotificationActions.NOTIFICATIONS_LOADED: {

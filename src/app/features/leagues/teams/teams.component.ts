@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Team } from './team.model';
-import { GetFavouriteTeams, AddTeam, RemoveTeam } from 'src/app/features/favourite/store/favourite.actions';
+import { GetFavouriteTeams, AddTeam, RemoveTeam } from '../../../features/favourite/store/favourite.actions';
 import { Store } from '@ngrx/store';
 import { skip } from 'rxjs/operators';
+import { AppState } from '../../../core/store/app.reducer';
 
 @Component({
   selector: 'app-teams',
@@ -10,10 +11,10 @@ import { skip } from 'rxjs/operators';
   styleUrls: ['./teams.component.css'],
 })
 export class TeamsComponent implements OnInit {
-  teams: any;
+  teams;
   isLoading = true;
 
-  constructor(private store: Store<any>) {}
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
     this.isLoading = true;

@@ -5,7 +5,6 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import {
   switchMap,
   map,
-  withLatestFrom,
   catchError,
   mapTo,
   tap,
@@ -16,22 +15,24 @@ import * as Favourite from "../../features/favourite/store/favourite.actions";
 import * as fromApp from "../../core/store/app.reducer";
 import { throwError, of } from "rxjs";
 import { Router } from "@angular/router";
-import { environment } from "src/environments/environment";
+import { environment } from "../../../environments/environment";
 import { SwPush } from "@angular/service-worker";
+import IAuth from "../../models/auth.model";
+import IResponseAuth from "../../models/auth.response";
 
 @Injectable()
 export class AuthEffects {
   @Effect()
   logout = this.actions$.pipe(
     ofType(Auth.LOGOUT),
-    switchMap((actionData: any) => {
-      return this.http.get<any[]>(environment.api + "/api/v1/auth/logout").pipe(
+    switchMap(() => {
+      return this.http.get(environment.api + "/api/v1/auth/logout").pipe(
         catchError((err) => {
           return throwError(err);
         })
       );
     }),
-    map((res: any) => {
+    map(() => {
       this.router.navigate(["/auth/login"]);
       return new Auth.LoggedOut();
     }),
@@ -41,12 +42,12 @@ export class AuthEffects {
   @Effect()
   loginOauth = this.actions$.pipe(
     ofType(Auth.LOGIN_OAUTH),
-    switchMap((actionData: any) => {
+    switchMap((actionData: {type: string, payload: IAuth}) => {
       return this.http
-        .post<any[]>(
+        .post(
           environment.api + "/api/v1/auth/login-oauth",
           {
-            user: actionData.payload.user,
+            user: actionData.payload.usr,
             token: actionData.payload.token,
           },
           {
@@ -57,17 +58,15 @@ export class AuthEffects {
         )
         .pipe(
           catchError((error) => {
-            return of({
-              error,
-            });
+            return of(error.error);
           })
         );
     }),
-    map((res: any) => {
+    map((res: IResponseAuth) => {
       localStorage.setItem("fr_token", res.token);
 
       if (res.error) {
-        return new Auth.Error(res.error.error);
+        return new Auth.Error(res.error);
       }
 
       return new Auth.Loggedin({
@@ -83,9 +82,9 @@ export class AuthEffects {
   @Effect()
   login = this.actions$.pipe(
     ofType(Auth.LOGIN),
-    switchMap((actionData: any) => {
+    switchMap((actionData: {type: string; payload: {email: string; password: string}}) => {
       return this.http
-        .post<any[]>(
+        .post(
           environment.api + "/api/v1/auth/login",
           {
             email: actionData.payload.email,
@@ -99,17 +98,15 @@ export class AuthEffects {
         )
         .pipe(
           catchError((error) => {
-            return of({
-              error,
-            });
+            return of(error.error);
           })
         );
     }),
-    map((res: any) => {
+    map((res: IResponseAuth) => {
       localStorage.setItem("fr_token", res.token);
 
       if (res.error) {
-        return new Auth.Error(res.error.error);
+        return new Auth.Error(res.error);
       }
 
       return new Auth.Loggedin({
@@ -125,9 +122,9 @@ export class AuthEffects {
   @Effect()
   signup = this.actions$.pipe(
     ofType(Auth.SIGNUP),
-    switchMap((actionData: any) => {
+    switchMap((actionData:  {type: string; payload: {email: string; password: string}}) => {
       return this.http
-        .post<any[]>(
+        .post(
           environment.api + "/api/v1/auth/signup",
           {
             email: actionData.payload.email,
@@ -141,15 +138,13 @@ export class AuthEffects {
         )
         .pipe(
           catchError((error) => {
-            return of({
-              error,
-            });
+            return of(error.error);
           })
         );
     }),
-    map((res: any) => {
+    map((res: IResponseAuth) => {
       if (res.error) {
-        return new Auth.Error(res.error.error);
+        return new Auth.Error(res.error);
       }
       localStorage.setItem("fr_token", res.token);
       return new Auth.Loggedin({

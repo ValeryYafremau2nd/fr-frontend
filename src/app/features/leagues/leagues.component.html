@@ -2,7 +2,7 @@
     <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
 <div class="leagues-box">
 <div *ngFor="let league of leagues" class="league-container">
-    <div class="league-logo" [routerLink]="'/leagues/' + league.id + '/standings'">
+    <div class="league-logo" [routerLink]="'/leagues/' + league.code + '/standings'">
         <!--<div class="league-name">{{ league.name }}</div>-->
         <div class="helper"></div>
         <img [src]="league.emblemUrl">

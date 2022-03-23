@@ -1,4 +1,7 @@
 import { Action } from '@ngrx/store';
+import ICompetition from '../../../models/competition/competition-interface';
+import IMatchday from '../../../models/competition/match-day-interface';
+import ITeam from '../../../models/team/team-interface';
 
 export const LOAD_MATCHES = '[Favourite] Load mathces';
 export const LOAD_TEAMS = '[Favourite] Load teams';
@@ -29,91 +32,81 @@ export class CleanStorage implements Action {
 export class LoadMatches implements Action {
   readonly type = LOAD_MATCHES;
 
-  constructor(public payload: any) {}
+  constructor(public payload: IMatchday[]) {
+  }
 }
 
 export class LoadTeams implements Action {
   readonly type = LOAD_TEAMS;
 
-  constructor(public payload: any) {}
+  constructor(public payload: ITeam[]) {}
 }
 
 export class LoadLeagues implements Action {
   readonly type = LOAD_LEAGUES;
 
-  constructor(public payload: any) {}
+  constructor(public payload: ICompetition[]) {}
 }
 
 export class AddTeam implements Action {
   readonly type = ADD_TEAM;
 
-  constructor(public payload: any) {}
+  constructor(public payload: number) {
+  }
 }
 
 export class AddLeague implements Action {
   readonly type = ADD_LEAGUE;
 
-  constructor(public payload: any) {}
+  constructor(public payload: string) {}
 }
 
 export class AddMatch implements Action {
   readonly type = ADD_MATCH;
 
-  constructor(public payload: any) {}
+  constructor(public payload: number) {}
 }
 
 export class TeamRemoved implements Action {
   readonly type = TEAM_REMOVED;
-
-  constructor(public payload: any) {}
 }
 
 export class LeagueRemoved implements Action {
   readonly type = LEAGUE_REMOVED;
-
-  constructor(public payload: any) {}
 }
 
 export class MatchRemoved implements Action {
   readonly type = MATCH_REMOVED;
-
-  constructor(public payload: any) {}
 }
 
 export class TeamAdded implements Action {
   readonly type = TEAM_ADDED;
-
-  constructor(public payload: any) {}
 }
 
 export class LeagueAdded implements Action {
   readonly type = LEAGUE_ADDED;
-
-  constructor(public payload: any) {}
 }
 
 export class MatchAdded implements Action {
   readonly type = MATCH_ADDED;
-
-  constructor(public payload: any) {}
 }
 
 export class RemoveTeam implements Action {
   readonly type = REMOVE_TEAM;
 
-  constructor(public payload: any) {}
+  constructor(public payload: number) {}
 }
 
 export class RemoveLeague implements Action {
   readonly type = REMOVE_LEAGUE;
 
-  constructor(public payload: any) {}
+  constructor(public payload: number) {}
 }
 
 export class RemoveMatch implements Action {
   readonly type = REMOVE_MATCH;
 
-  constructor(public payload: any) {}
+  constructor(public payload: number) {}
 }
 
 export class GetFavouriteTeams implements Action {

@@ -1,9 +1,12 @@
+import ICompetition from '../../../models/competition/competition-interface';
+import IMatchday from '../../../models/competition/match-day-interface';
+import ITeam from '../../../models/team/team-interface';
 import * as FavouriteActions from './favourite.actions';
 
 export interface State {
-  teams: any[];
-  leagues: any[];
-  matches: any[];
+  teams: ITeam[];
+  leagues: ICompetition[];
+  matches: IMatchday[];
 }
 
 const initialState: State = {

@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -35,6 +35,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
+import { PwaService } from './notifications/services/pwa.service';
 
 @NgModule({
   declarations: [AppComponent, ConfigurationComponent, HeaderComponent, ErrorComponent],
@@ -48,7 +49,7 @@ import { MatOptionModule } from '@angular/material/core';
     AppRoutingModule,
     NotificationModule,
     BrowserAnimationsModule,
-    ServiceWorkerModule.register('/ngsw-worker.js', {
+    ServiceWorkerModule.register(`${environment.workerHref}/ngsw-worker.js`, {
       enabled: true,
     }),
     MatToolbarModule,
@@ -74,6 +75,12 @@ import { MatOptionModule } from '@angular/material/core';
       multi: true,
     },
     { provide: LocationStrategy, useClass: HashLocationStrategy },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (pwaService: PwaService) => () => pwaService.initPwaPrompt(),
+      deps: [PwaService],
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })

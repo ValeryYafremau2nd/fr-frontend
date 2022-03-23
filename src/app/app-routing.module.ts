@@ -16,8 +16,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     loadChildren: () => import('./features/favourite/favourite.module').then((m) => m.FavouriteModule),
     data: { animation: 'FavouritePages' },
-    resolve: [
-    ],
+    resolve: [],
   },
   {
     path: 'leagues',

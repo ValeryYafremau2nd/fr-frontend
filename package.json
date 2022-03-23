@@ -6,6 +6,7 @@
     "start": "http-server -p 8080 -c-1 dist/football-reminder",
     "serve": "ng serve football-reminder",
     "build": "ng build --configuration production football-reminder",
+    "build:stg": "ng build --configuration staging --base-href /match-tracker/ football-reminder",
     "test": "ng test",
     "lint": "ng lint --fix",
     "prettier": "prettier -w \"src/**/*.ts\"",

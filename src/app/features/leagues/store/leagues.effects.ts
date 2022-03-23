@@ -6,7 +6,11 @@ import { switchMap, map, withLatestFrom } from 'rxjs/operators';
 import * as Leagues from './leagues.actions';
 
 import * as fromApp from '../../../core/store/app.reducer';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../../../environments/environment';
+import Response from '../../../models/response.model';
+import ICompetition from '../../../models/competition/competition-interface';
+import IMatchday from '../../../models/competition/match-day-interface';
+import IStanding from '../../../models/competition/standing-interface';
 
 @Injectable()
 export class LeagueEffects {
@@ -14,45 +18,45 @@ export class LeagueEffects {
   fetchLeagues = this.actions$.pipe(
     ofType(Leagues.GET_LEAGUES),
     switchMap(() => {
-      return this.http.get<any[]>(environment.api + '/leagues', {
+      return this.http.get(environment.api + '/leagues', {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
         }),
       });
     }),
-    map((leagues) => {
-      return new Leagues.SetAllLeagues(leagues);
+    map((res: Response) => {
+      return new Leagues.SetAllLeagues(res.data as ICompetition[]);
     })
   );
 
   @Effect()
   fetchMatches = this.actions$.pipe(
     ofType(Leagues.GET_MATCHES),
-    switchMap((action) => {
-      return this.http.get<any[]>(environment.api + `/leagues/${(action as any).payload}/matches`, {
+    switchMap((action: {type: string; payload: IMatchday[]}) => {
+      return this.http.get(environment.api + `/leagues/${action.payload}/matches`, {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
         }),
       });
     }),
-    map((matches) => {
-      return new Leagues.SetMatchess(matches);
+    map((res: Response) => {
+      return new Leagues.SetMatchess(res.data as IMatchday[]);
     })
   );
 
   @Effect()
   fetchStandings = this.actions$.pipe(
     ofType(Leagues.GET_STANDINGS),
-    switchMap((action) => {
-      return this.http.get<any>(environment.api + `/leagues/${(action as any).payload}/standings`, {
+    switchMap((action: {type: string; payload: ICompetition[]}) => {
+      return this.http.get(environment.api + `/leagues/${action.payload}/standings`, {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
         }),
       });
     }),
-    map((standings) => {
+    map((res: Response) => {
       return new Leagues.SetStandings(
-        standings.data.filter((standing) => standing._id === null || standing._id.startsWith('GROUP_'))
+        (res.data as IStanding[]).filter((standing) => standing._id === null || standing._id.startsWith('GROUP_'))
       );
     })
   );

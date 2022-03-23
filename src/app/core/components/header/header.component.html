@@ -12,24 +12,28 @@
       <a class="nav-link"  style="color:darkred" routerLink="/notifications">Notifications</a>
     </li>-->
   </ul>
-  <form class="form-inline" action="#">
-    
-    <button *ngIf="isLoggedIn" (click)="logOut()" mat-button color="warn" style="font-size: 15px;">Logout</button>
+  <form *ngIf="isLoggedIn" class="form-inline" action="#">
+    <mat-icon class="download-i" *ngIf="pwaService.isAvailable" (click)="pwaService.installPwa()">cloud_download</mat-icon>
+    <button (click)="logOut()" mat-button color="warn" style="font-size: 15px;">Logout<mat-icon style="color: #f44336">exit_to_app</mat-icon></button>
   </form>
 </nav>
 
 <!-- Submenu -->
-<nav *ngIf="isLoggedIn" class="navbar navbar-expand-sm bg-light navbar-light submenu">
+<nav *ngIf="isVisible" class="navbar navbar-expand-sm bg-light navbar-light submenu">
   <ul class="navbar-nav">
     <li class="nav-item" *ngIf="isVisible && !isFavourite" [ngClass]="{'active' : tab==='standings'}">
-      <a class="nav-link" [routerLink]="urlRoot + '/standings'">Standing</a>
+      <a class="nav-link" [routerLink]="urlRoot + '/standings'"><mat-icon> format_list_numbered_rtl</mat-icon><div style="width: auto; float: left">Standing&nbsp;</div></a>
     </li>
     <li class="nav-item" *ngIf="isVisible || isFavourite" [ngClass]="{'active' : tab==='matches'}">
-      <a class="nav-link" [routerLink]="urlRoot + '/matches'">Matches</a>
+      <a class="nav-link" [routerLink]="urlRoot + '/matches'"><mat-icon>event_note</mat-icon><div style="width: auto; float: left">Matches&nbsp;</div></a>
     </li>
     <li class="nav-item" *ngIf="isFavourite" [ngClass]="{'active' : tab==='teams'}">
-      <a class="nav-link" [routerLink]="'/favourite/teams'">Teams</a>
+      <a class="nav-link" [routerLink]="'/favourite/teams'"><mat-icon>group</mat-icon><div style="width: auto; float: left">Teams&nbsp;</div></a>
     </li>
+    <li class="nav-item refresh">
+      <a class="nav-link" (click)="refresh()"><mat-icon>refresh</mat-icon><div style="width: auto; float: left">Refresh view&nbsp;</div></a>
+    </li>
+    
     <!--
     <li class="nav-item" *ngIf="!isFavourite" [ngClass]="{'active' : tab==='strikers'}">
       <a class="nav-link" [routerLink]="urlRoot + '/strikers'">Strikers</a>

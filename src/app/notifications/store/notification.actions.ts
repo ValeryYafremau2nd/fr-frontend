@@ -7,6 +7,7 @@ export const NOTIFICATIONS_LOADED = '[Notifications] lodaded';
 export const NOTIFICATION_DELETED = '[Notifications] deleted';
 export const NOTIFICATION_ADDED = '[Notifications] added';
 
+// OUT OF DATE
 export class LoadNotifications implements Action {
   readonly type = LOAD_NOTIFICATIONS;
 

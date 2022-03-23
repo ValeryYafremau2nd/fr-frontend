@@ -1,11 +1,13 @@
+import ICompetition from '../../../models/competition/competition-interface';
+import IMatchday from '../../../models/competition/match-day-interface';
+import ITeam from '../../../models/team/team-interface';
 import * as LeaguesActions from './leagues.actions';
 
-/*export interface State {
-  // recipes: Recipe[];
-  teams: any[];
-  leagues: any[];
-  matches: any[];
-}*/
+export interface State {
+  teams: ITeam[];
+  leagues: ICompetition[];
+  matches: IMatchday[];
+}
 
 export function leaguesReducer(
   state = { leagues: [] },
@@ -14,17 +16,17 @@ export function leaguesReducer(
   switch (action.type) {
     case LeaguesActions.SET_MATCHES:
       const newStateWithMatches = { ...state };
-      newStateWithMatches.leagues = [{ id: action.payload.data[0].competitionId }];
+      newStateWithMatches.leagues = [{ code: action.payload[0].code }];
       const league1 = newStateWithMatches.leagues.find(
-        (leagues) => leagues.id === action.payload.data[0].competitionId
+        (leagues) => leagues.code === action.payload[0].code
       );
-      league1.matches = action.payload.data;
+      league1.matches = action.payload;
       return newStateWithMatches;
 
     case LeaguesActions.SET_STANDINGS:
       const newState = { ...state };
-      newState.leagues = [{ id: action.payload[0].competitionId }];
-      const league = newState.leagues.find((leagues) => leagues.id === action.payload[0].competitionId);
+      newState.leagues = [{ code: action.payload[0].code }];
+      const league = newState.leagues.find((leagues) => leagues.code === action.payload[0].code);
       league.standings = action.payload;
       return newState;
 

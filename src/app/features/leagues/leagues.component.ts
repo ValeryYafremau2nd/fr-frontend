@@ -1,6 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
+import { take } from 'rxjs/operators';
+import { AppState } from '../../core/store/app.reducer';
+import ICompetition from '../../models/competition/competition-interface';
 import { NavStateService, Mode } from '../../core/services/nav-state.service';
 import { AddLeague } from '../favourite/store/favourite.actions';
 
@@ -9,29 +12,29 @@ import { AddLeague } from '../favourite/store/favourite.actions';
   templateUrl: './leagues.component.html',
   styleUrls: ['./leagues.component.css'],
 })
-export class LeaguesComponent implements OnInit, OnDestroy {
-  leagues: any[] = [];
+export class LeaguesComponent implements OnInit {
+  leagues: ICompetition[] = [];
   storeSub: Subscription;
   isLoading = true;
 
-  constructor(private store: Store<any /*fromApp.AppState*/>, private navStateService: NavStateService) {}
+  constructor(private store: Store<AppState>, private navStateService: NavStateService) {}
 
   ngOnInit(): void {
     this.isLoading = true;
     const navState = this.navStateService.getCurrentState();
 
     if (navState.mode === Mode.Leagues) {
-      this.storeSub = this.store.subscribe((state) => {
+      this.storeSub = this.store.pipe(take(1)).subscribe((state) => {
         // fix unsub
         this.isLoading = false;
-        const trackedLeagues = state.favourite.leagues.map((league) => league.id);
+        const trackedLeagues = state.favourite.leagues.map((league) => league.code);
         this.leagues = state.leagues.leagues.map((league) => ({
           ...league,
-          tracked: trackedLeagues.includes(league.id),
+          tracked: trackedLeagues.includes(league.code),
         }));
       });
     } else {
-      this.storeSub = this.store.select('favourite').subscribe((favourite) => {
+      this.storeSub = this.store.select('favourite').pipe(take(1)).subscribe((favourite) => {
         this.leagues = favourite.leagues.map((league) => ({
           ...league,
           tracked: true,
@@ -40,14 +43,9 @@ export class LeaguesComponent implements OnInit, OnDestroy {
     }
   }
 
-  track($event, league: any) {
-    this.store.dispatch(new AddLeague({ id: league.id, logo: league.logo, title: league.title }));
+  track($event, league: ICompetition) {
+    this.store.dispatch(new AddLeague(league.code));
   }
 
-  untrack($event, league: any) {
-  }
-
-  ngOnDestroy(): void {
-    this.storeSub.unsubscribe();
-  }
+  untrack($event, league: ICompetition) {}
 }

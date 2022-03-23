@@ -6,12 +6,12 @@
             <th  class="team-col">{{team.tla}}</th>
             <td  class="team-col col-center">{{team.name}}</td>
             <td  class="team-col col-center">{{team.area.name}}</td>
-            <td class="team-col"><app-track
+            <td class="team-col col-track"><app-track
                 [itemId]="team.id"
                 [tracker]="trackTeam.bind(this)"
                 [untracker]="untrackTeam.bind(this)"
                 [tracked]="true"
-                style="float:right"
+                style="float:right;width:100%"
               ></app-track></td>
         </tr>
     </table>

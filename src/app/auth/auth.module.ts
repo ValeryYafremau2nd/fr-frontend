@@ -29,7 +29,7 @@ import { SocialLoginModule, SocialAuthServiceConfig, GoogleLoginProvider } from 
           {
             id: GoogleLoginProvider.PROVIDER_ID,
             provider: new GoogleLoginProvider(
-              '124452340094-n9trtaie2urmc0n9ke9mca6urhh3djds.apps.googleusercontent.com'
+              '805824721583-pc952sqdgbl6dqr7dutm6lb24d9rbjvm.apps.googleusercontent.com'
             ),
           },
         ],

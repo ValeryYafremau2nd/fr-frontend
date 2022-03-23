@@ -7,13 +7,19 @@
     justify-content: center;
 }
 .auth-form > div {
-    border: 2px solid lavender;
-    border-radius: 8px;
     padding: 30px;
-    width: 355px;
+    width: 335px;
 }
 .error {
-    border-radius: 7px;
-    background-color: pink;
+    height: 30px;
+    text-align: center;
+    border-radius: 4px;
+    background-color: darkred;
     padding: 2px 10px;
+    margin-bottom: 5px;
+    color: white;
+}
+
+.hidden {
+    visibility: hidden
 }

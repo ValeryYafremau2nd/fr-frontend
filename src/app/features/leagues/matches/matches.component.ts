@@ -6,7 +6,7 @@ import { Subscribable, Subscription } from 'rxjs';
 import { GetMatches } from '../store/leagues.actions';
 import { GetFavouriteMathes, AddTeam, AddMatch, RemoveMatch } from '../../favourite/store/favourite.actions';
 import { FilterService } from './filter/filter.service';
-import { skip } from 'rxjs/operators';
+import { skip, take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-matches',
@@ -65,8 +65,8 @@ export class MatchesComponent implements OnInit, OnDestroy {
     if (navState.mode === Mode.Leagues) {
       this.storeSub = this.store.select('leagues').subscribe((leagues) => {
         const navState = this.navStateService.getCurrentState();
-        const leagueId = navState.league;
-        const selectedLeague = leagues.leagues.find((league) => league.id === +leagueId);
+        const code = navState.league;
+        const selectedLeague = leagues.leagues.find((league) => league.code === code);
         this.notFilteredMatches = selectedLeague ? selectedLeague.matches : [];
         this.matchDays = this.applyFilters();
         if (this.matchDays !== undefined) {

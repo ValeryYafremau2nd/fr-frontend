@@ -4,29 +4,31 @@ import { HttpClient } from '@angular/common/http';
 import { switchMap, map } from 'rxjs/operators';
 
 import * as NotificationActions from './notification.actions';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../../environments/environment';
+import Response from '../../models/response.model';
 
+// STALE
 @Injectable()
 export class NotificationEffects {
   @Effect()
   fetchTimestamps = this.actions$.pipe(
     ofType(NotificationActions.LOAD_NOTIFICATIONS),
     switchMap(() => {
-      return this.http.get<any[]>(environment.api + '/timestamps');
+      return this.http.get(environment.api + '/timestamps');
     }),
-    map((res: any) => {
-      return new NotificationActions.NotificationLoaded(res.results);
+    map((res: Response) => {
+      return new NotificationActions.NotificationLoaded(res.data);
     })
   );
   @Effect()
   addTimestamp = this.actions$.pipe(
     ofType(NotificationActions.ADD_NOTIFICATION),
     switchMap((actionData: any) => {
-      return this.http.post<any[]>(environment.api + '/timestamp', {
+      return this.http.post(environment.api + '/timestamp', {
         timestamp: actionData.payload,
       });
     }),
-    map((res: any) => {
+    map((res: Response) => {
       return new NotificationActions.NotificationAdded(res.data);
     })
   );
@@ -34,9 +36,9 @@ export class NotificationEffects {
   removeTimestamp = this.actions$.pipe(
     ofType(NotificationActions.REMOVE_NOTIFICATION),
     switchMap((actionData: any) => {
-      return this.http.delete<any[]>(environment.api + `/timestamp/${actionData.payload}`);
+      return this.http.delete(environment.api + `/timestamp/${actionData.payload}`);
     }),
-    map((res: any) => {
+    map((res: Response) => {
       return new NotificationActions.NotificationDeleted(res.data);
     })
   );

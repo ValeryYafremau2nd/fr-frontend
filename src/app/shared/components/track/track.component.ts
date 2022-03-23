@@ -8,8 +8,8 @@ import { Component, Input, EventEmitter, Output } from '@angular/core';
 export class TrackComponent {
   @Input() tracked: boolean = false;
   @Input() itemId: number;
-  @Input() tracker: (id: number) => any;
-  @Input() untracker: (id: number) => any;
+  @Input() tracker: (id: number) => void;
+  @Input() untracker: (id: number) => void;
 
   constructor() {}
 

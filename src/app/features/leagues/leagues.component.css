@@ -22,8 +22,7 @@
     text-align: center;
     background-color: ghostwhite;
     padding: 25px;
-    border: 5px solid gainsboro;
-    border-radius: 10px;
+    border: 2px solid gainsboro;
 }
 .league-logo:hover {
     border-color: gray;
@@ -44,3 +43,15 @@ button {
     text-align: center;
     font-weight: 600;
 }
+
+@media (max-width: 640px) {
+    .league-container {
+        width: auto;
+        height: auto;
+    }
+    .league-logo {
+        width: 150px;
+        height: 150px;
+        padding: 15px;
+    }
+ }

@@ -1,4 +1,10 @@
-<div [ngSwitch]="tracked">
-    <button *ngSwitchCase="true" type="button" class="btn btn-success" (click)="untrack()">Untrack</button>
+<div [ngSwitch]="tracked" style="color:goldenrod; cursor: pointer">
+    <button style="background-color:green" *ngSwitchCase="true" type="button" class="btn btn-success" (click)="untrack()">Untrack</button>
     <button *ngSwitchCase="false" type="button" class="btn btn-secondary" (click)="track()">Track</button>
+    <!--<div *ngSwitchCase="true" (click)="untrack()"><mat-icon style="
+        font-size: 35px;
+        margin-right: 20px;color:yellowgreen" >check_circle</mat-icon></div>
+    <div *ngSwitchCase="false" (click)="track()"><mat-icon style="
+        font-size: 35px;
+        margin-right: 20px;color: grey" >check_circle_outline</mat-icon></div>-->
 </div>

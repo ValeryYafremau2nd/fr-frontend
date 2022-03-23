@@ -4,8 +4,9 @@
 
 export const environment = {
   production: false,
+  workerHref: '',
   api: 'http://localhost:3000',
-  googleClientId: 'BCp1KVN_hl1WZaolVgEjEP_3dZWa3VmQVdswYq8vRT5eGnERgnJngwZEc-jR5SqqekpzHeFkCYkcaiHbTXpkr_Q'
+  googleClientId: 'BCp1KVN_hl1WZaolVgEjEP_3dZWa3VmQVdswYq8vRT5eGnERgnJngwZEc-jR5SqqekpzHeFkCYkcaiHbTXpkr_Q',
 };
 
 /*

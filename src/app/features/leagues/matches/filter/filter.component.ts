@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FilterService } from './filter.service';
-import { NavStateService } from 'src/app/core/services/nav-state.service';
+import { NavStateService } from '../../../../core/services/nav-state.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({

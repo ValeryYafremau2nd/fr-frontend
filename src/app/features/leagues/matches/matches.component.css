@@ -1,12 +1,12 @@
 table {
-    margin: 0 3%;
-    width: 94%;
+    margin: auto;
     background-color: #f7f7f7;
+    max-width: 1000px;
 }
 
-tr {
-    background-color: cornsilk;
-}
+/*tr {
+    background-color: floralwhite;
+}*/
 
 .match-day {
     text-align: center;
@@ -14,21 +14,27 @@ tr {
     margin: 20px 0 10px;
 }
 .finished {
-    background-color: #f7f7f7;
+    background-color: beige;
 }
 .postponed {
     background-color: #f7f7f7;
 }
-.tracked-team {
-    color: white;
-    background-color: darkcyan;
+.tracked-team {    
+    font-weight: 500;
+    color: darkgoldenrod;
 }
-
-.col-data{
-    width: 10%;
+.col-competition {
+    width: 4.1vw;
+}
+.col-competition img {
+    width: 4vw;
+    height: 4vw;
+    max-width: 30px;
+    max-height: 30px;
+    float: left;
 }
 .col-home-team {
-    width: 28%;
+    width: 30%;
     text-align: right;
 }
 .col-home-team-score {
@@ -36,18 +42,18 @@ tr {
     text-align: right;
 }
 .col-separator {
-    width: 4%;
+    width: 3%;
 }
-.col-away-teamscore {
+.col-away-team-score {
     width: 5%;
     text-align: left;
 }
 .col-away-team {
-    width: 28%;
+    width: 30%;
     text-align: left;
 }
 .col-track {
-    width: 10%;
+    width: 15%;
 }
 
 @media (max-width: 640px) { 

@@ -11,7 +11,7 @@ import { take } from 'rxjs/operators';
 export class FavouriteLeaguesResolverService implements Resolve<any[]> {
   constructor(private store: Store<fromApp.AppState>, private actions$: Actions) {}
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+  resolve() {
     this.store.dispatch(new FavouriteActions.GetFavouriteLeagues());
     return this.actions$.pipe(ofType(FavouriteActions.LOAD_MATCHES), take(1));
   }

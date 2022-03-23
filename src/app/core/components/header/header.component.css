@@ -4,19 +4,32 @@ nav {
     height:50px;
     top: 0px;
     padding-left: 10px !important;
+    overflow: hidden;
 }
 
 form {
     float: right;
 }
 
+.menu ul {
+    padding-left: 10px;
+}
+
 .home-link {
-    padding: 1.7vw;
-    background-color: red;
+    padding: 14px;
+    background-color: brown;
     color:white !important;
     text-decoration: none;
     font-family: Tahpma, Arial, Helvetica, sans-serif !important;
     font-size: 20px !important;
+}
+
+.menu {
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    padding-left: 10px;
+    font-weight: 500;
+    background-image: linear-gradient(black, DarkSlateGray );
 }
 
 nav ul {
@@ -26,11 +39,24 @@ nav ul li {
     padding: 0 5px;
 }
 
+.refresh {
+    padding-left: 20px;
+}
+
+.refresh a {
+    color:darkgreen !important;
+    cursor: pointer;
+}
+.refresh a:hover {
+    color:green !important;
+}
+
 .submenu {
     top: 50px;
     font-weight: 500;
     border-bottom: solid 2px;
-    justify-content: initial;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
 }
 
 .logo {
@@ -39,9 +65,13 @@ nav ul li {
     width: auto;
     padding-right: 10px;
 }
-
-@media (max-width: 640px) { 
-    nav {
-        font-size: 1.7vh;
-    }
- }
+.download-i{
+    color: white;
+    cursor: pointer;
+    padding-right: 10px;
+}
+@media (min-width: 576px) {
+.navbar-expand-sm {
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+}}

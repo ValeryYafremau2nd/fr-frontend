@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AddNotification, RemoveNotification } from '../store/notification.actions';
 import { Subscription } from 'rxjs';
+import { AppState } from '../../core/store/app.reducer';
 
 @Component({
   selector: 'app-configuration',
@@ -12,7 +13,7 @@ export class ConfigurationComponent implements OnInit, OnDestroy {
   timestampSub: Subscription;
   timestamps: [];
 
-  constructor(private store: Store<any>) {
+  constructor(private store: Store<AppState>) {
     this.timestampSub = this.store.select('notifications').subscribe((notifications) => {
       this.timestamps = notifications.notifications;
     });
