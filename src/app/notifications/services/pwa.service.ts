@@ -13,11 +13,6 @@ export class PwaService {
   public isAvailable = false;
 
   constructor(private platform: Platform, private swPush: SwPush, private http: HttpClient) {}
-  ngOnInit(): void {
-    if (navigator.serviceWorker) {
-      this.subscribeToNotifications();
-    }
-  }
 
   subscribeToNotifications() {
     this.swPush

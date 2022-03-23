@@ -33,6 +33,7 @@
     "bootbox": "^5.4.0",
     "bootstrap": "^4.4.1",
     "g": "^2.0.1",
+    "hammerjs": "^2.0.8",
     "jquery": "^3.4.1",
     "ngrx": "0.0.1-security",
     "rxjs": "~6.5.4",
