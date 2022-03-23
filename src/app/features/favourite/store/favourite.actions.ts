@@ -32,8 +32,7 @@ export class CleanStorage implements Action {
 export class LoadMatches implements Action {
   readonly type = LOAD_MATCHES;
 
-  constructor(public payload: IMatchday[]) {
-  }
+  constructor(public payload: IMatchday[]) {}
 }
 
 export class LoadTeams implements Action {
@@ -51,8 +50,7 @@ export class LoadLeagues implements Action {
 export class AddTeam implements Action {
   readonly type = ADD_TEAM;
 
-  constructor(public payload: number) {
-  }
+  constructor(public payload: number) {}
 }
 
 export class AddLeague implements Action {

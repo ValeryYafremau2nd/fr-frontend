@@ -25,9 +25,12 @@ export class PwaService {
         serverPublicKey: environment.googleClientId,
       })
       .then((sub) => {
-        this.http.post(environment.api + '/subscribe', JSON.stringify(sub)).pipe(take(1)).subscribe(() => {
-          /*console.log('test')*/
-        });
+        this.http
+          .post(environment.api + '/subscribe', JSON.stringify(sub))
+          .pipe(take(1))
+          .subscribe(() => {
+            /*console.log('test')*/
+          });
       })
       .catch((err) => console.error('Could not subscribe to notifications', err));
   }

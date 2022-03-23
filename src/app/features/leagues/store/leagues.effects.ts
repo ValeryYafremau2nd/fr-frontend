@@ -32,7 +32,7 @@ export class LeagueEffects {
   @Effect()
   fetchMatches = this.actions$.pipe(
     ofType(Leagues.GET_MATCHES),
-    switchMap((action: {type: string; payload: IMatchday[]}) => {
+    switchMap((action: { type: string; payload: IMatchday[] }) => {
       return this.http.get(environment.api + `/leagues/${action.payload}/matches`, {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
@@ -47,7 +47,7 @@ export class LeagueEffects {
   @Effect()
   fetchStandings = this.actions$.pipe(
     ofType(Leagues.GET_STANDINGS),
-    switchMap((action: {type: string; payload: ICompetition[]}) => {
+    switchMap((action: { type: string; payload: ICompetition[] }) => {
       return this.http.get(environment.api + `/leagues/${action.payload}/standings`, {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',

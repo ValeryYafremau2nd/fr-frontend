@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
   tab: string = 'matches';
   isLoggedIn: boolean = false; // fix public
   showSubmenu = false;
-  
+
   destroy$: Subject<boolean> = new Subject<boolean>();
 
   constructor(
@@ -35,9 +35,12 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.store.select('auth').pipe(takeUntil(this.destroy$)).subscribe((auth: any) => {
-      this.isLoggedIn = auth.auth;
-    });
+    this.store
+      .select('auth')
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((auth: any) => {
+        this.isLoggedIn = auth.auth;
+      });
     this.router.events.pipe(takeUntil(this.destroy$)).subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
         const navState = this.navStateService.getCurrentState();
@@ -64,8 +67,8 @@ export class HeaderComponent implements OnInit {
 
   refresh() {
     let currentUrl = this.router.url; // fix undescore for private
-    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
-        this.router.navigate([currentUrl]);
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
     });
   }
 

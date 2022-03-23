@@ -17,7 +17,7 @@ export class StandingComponent implements OnInit {
   public standings: Team[] = [];
   storeSub;
   isLoading = true;
-  
+
   destroy$: Subject<boolean> = new Subject<boolean>();
 
   constructor(private store: Store<AppState>, private navStateService: NavStateService) {
@@ -27,16 +27,19 @@ export class StandingComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoading = true;
-    this.storeSub = this.store.select('leagues').pipe(takeUntil(this.destroy$)).subscribe((leagues) => {
-      // fix unsub
-      const navState = this.navStateService.getCurrentState();
-      const code = navState.league;
-      const selectedLeague = leagues.leagues.find((league) => league.code === code);
-      this.standings = selectedLeague ? selectedLeague.standings : [];
-      if (this.standings !== undefined) {
-        this.isLoading = false;
-      }
-    });
+    this.storeSub = this.store
+      .select('leagues')
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((leagues) => {
+        // fix unsub
+        const navState = this.navStateService.getCurrentState();
+        const code = navState.league;
+        const selectedLeague = leagues.leagues.find((league) => league.code === code);
+        this.standings = selectedLeague ? selectedLeague.standings : [];
+        if (this.standings !== undefined) {
+          this.isLoading = false;
+        }
+      });
   }
 
   ngOnDestroy() {

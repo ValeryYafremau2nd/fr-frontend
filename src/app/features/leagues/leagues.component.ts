@@ -34,12 +34,15 @@ export class LeaguesComponent implements OnInit {
         }));
       });
     } else {
-      this.storeSub = this.store.select('favourite').pipe(take(1)).subscribe((favourite) => {
-        this.leagues = favourite.leagues.map((league) => ({
-          ...league,
-          tracked: true,
-        }));
-      });
+      this.storeSub = this.store
+        .select('favourite')
+        .pipe(take(1))
+        .subscribe((favourite) => {
+          this.leagues = favourite.leagues.map((league) => ({
+            ...league,
+            tracked: true,
+          }));
+        });
     }
   }
 

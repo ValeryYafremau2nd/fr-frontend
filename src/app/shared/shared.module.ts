@@ -16,7 +16,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [LoadingSpinnerComponent, TrackComponent, ScrollViewComponent],
-  imports: [MatIconModule,CommonModule],
+  imports: [MatIconModule, CommonModule],
   exports: [LoadingSpinnerComponent, TrackComponent, ScrollViewComponent],
 })
 export class SharedModule {}

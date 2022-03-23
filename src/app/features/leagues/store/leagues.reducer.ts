@@ -17,9 +17,7 @@ export function leaguesReducer(
     case LeaguesActions.SET_MATCHES:
       const newStateWithMatches = { ...state };
       newStateWithMatches.leagues = [{ code: action.payload[0].code }];
-      const league1 = newStateWithMatches.leagues.find(
-        (leagues) => leagues.code === action.payload[0].code
-      );
+      const league1 = newStateWithMatches.leagues.find((leagues) => leagues.code === action.payload[0].code);
       league1.matches = action.payload;
       return newStateWithMatches;
 

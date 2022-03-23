@@ -12,26 +12,25 @@ export const ERROR = '[Auth] Error';
 export class Error implements Action {
   readonly type = ERROR;
 
-  constructor(public payload: string) {
-  }
+  constructor(public payload: string) {}
 }
 
 export class SignUp implements Action {
   readonly type = SIGNUP;
 
-  constructor(public payload: {email: string, password: string}) {}
+  constructor(public payload: { email: string; password: string }) {}
 }
 
 export class Login implements Action {
   readonly type = LOGIN;
 
-  constructor(public payload: {email: string, password: string}) {}
+  constructor(public payload: { email: string; password: string }) {}
 }
 
 export class LoginOauth implements Action {
   readonly type = LOGIN_OAUTH;
 
-  constructor(public payload: {token: string, usr: string}) {}
+  constructor(public payload: { token: string; usr: string }) {}
 }
 
 export class Logout implements Action {
