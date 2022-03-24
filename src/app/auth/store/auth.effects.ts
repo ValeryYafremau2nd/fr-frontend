@@ -13,6 +13,7 @@ import { environment } from '../../../environments/environment';
 import { SwPush } from '@angular/service-worker';
 import IAuth from '../../models/auth.model';
 import IResponseAuth from '../../models/auth.response';
+import { PwaService } from 'src/app/notifications/services/pwa.service';
 
 @Injectable()
 export class AuthEffects {
@@ -70,7 +71,10 @@ export class AuthEffects {
         error: res.data.error,
       });
     }),
-    tap(() => this.router.navigate(['']))
+    tap(() => {
+      this.router.navigate(['']);
+      this._pwaService.subscribeToNotifications();
+    })
   );
 
   @Effect()
@@ -110,7 +114,10 @@ export class AuthEffects {
         error: res.data.error,
       });
     }),
-    tap(() => this.router.navigate(['']))
+    tap(() => {
+      this.router.navigate(['']);
+      this._pwaService.subscribeToNotifications();
+    })
   );
 
   @Effect()
@@ -148,7 +155,10 @@ export class AuthEffects {
         error: res.data.error,
       });
     }),
-    tap(() => this.router.navigate(['']))
+    tap(() => {
+      this.router.navigate(['']);
+      this._pwaService.subscribeToNotifications();
+    })
   );
 
   constructor(
@@ -156,6 +166,7 @@ export class AuthEffects {
     private http: HttpClient,
     private store: Store<fromApp.AppState>,
     private swPush: SwPush,
-    private router: Router
+    private router: Router,
+    private _pwaService: PwaService
   ) {}
 }

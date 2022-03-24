@@ -8,18 +8,14 @@
   "start_url": "./",
   "icons": [
     {
-      "src": "assets/icons/96 x 96 - BMP (32-bit).png",
-      "sizes": "96x96",
-      "type": "image/png"
-    },
-    {
-      "src": "assets/icons/128 x 128 - BMP (32-bit).png",
-      "sizes": "128x128",
-      "type": "image/png"
-    },
-    {
       "src": "assets/icons/256 x 256 - BMP (32-bit).png",
       "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "assets/icons/512x512.png",
+      "sizes": "512x512",
       "type": "image/png"
     }
   ]

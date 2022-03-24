@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
   isFavourite: boolean = false;
   urlRoot: string = '/favourite';
   tab: string = 'matches';
-  isLoggedIn: boolean = false; // fix public
+  isLoggedIn: boolean = false;
   showSubmenu = false;
 
   destroy$: Subject<boolean> = new Subject<boolean>();
@@ -66,7 +66,7 @@ export class HeaderComponent implements OnInit {
   }
 
   refresh() {
-    let currentUrl = this.router.url; // fix undescore for private
+    let currentUrl = this.router.url;
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
       this.router.navigate([currentUrl]);
     });

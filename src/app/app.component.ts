@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { slideInAnimation } from './shared/animations/app.animations'; // to core
 import { RouterOutlet } from '@angular/router';
+import { slideInAnimation } from './animations/app.animations';
 import { PwaService } from './notifications/services/pwa.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { PwaService } from './notifications/services/pwa.service';
 export class AppComponent {
   title = 'football-reminder';
 
-  constructor(private _pwaService: PwaService) {    
+  constructor(private _pwaService: PwaService) {
     if (navigator.serviceWorker) {
       this._pwaService.subscribeToNotifications();
     }

@@ -4,19 +4,15 @@ import { TrackComponent } from './components/track/track.component';
 import { CommonModule } from '@angular/common';
 import { ScrollViewComponent } from './components/scroll-view/scroll-view.component';
 import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatOptionModule } from '@angular/material/core';
-import { MatInputModule } from '@angular/material/input';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatSelectModule } from '@angular/material/select';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FilterComponent } from './components/filter/filter.component';
+import { FilterService } from './components/filter/filter.service';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { MatTableModule } from '@angular/material/table';
-import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
-  declarations: [LoadingSpinnerComponent, TrackComponent, ScrollViewComponent],
-  imports: [MatIconModule, CommonModule],
-  exports: [LoadingSpinnerComponent, TrackComponent, ScrollViewComponent],
+  declarations: [LoadingSpinnerComponent, TrackComponent, ScrollViewComponent, FilterComponent],
+  imports: [MatIconModule, CommonModule, ReactiveFormsModule, FormsModule, MatSlideToggleModule],
+  exports: [LoadingSpinnerComponent, TrackComponent, ScrollViewComponent, FilterComponent],
+  providers: [FilterService],
 })
 export class SharedModule {}

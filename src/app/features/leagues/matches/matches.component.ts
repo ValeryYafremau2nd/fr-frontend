@@ -1,12 +1,13 @@
 import { Component, OnInit, Injectable, OnDestroy } from '@angular/core';
 import { MatchDay } from './match.model';
 import { Store } from '@ngrx/store';
-import { NavStateService, Mode } from 'src/app/core/services/nav-state.service';
+import { NavStateService, Mode } from '../../../core/services/nav-state.service';
 import { Subscribable, Subscription } from 'rxjs';
 import { GetMatches } from '../store/leagues.actions';
 import { GetFavouriteMathes, AddTeam, AddMatch, RemoveMatch } from '../../favourite/store/favourite.actions';
-import { FilterService } from './filter/filter.service';
 import { skip, take } from 'rxjs/operators';
+import { FilterService } from '../../../shared/components/filter/filter.service';
+import { AppState } from '../../../core/store/app.reducer';
 
 @Component({
   selector: 'app-matches',
@@ -24,7 +25,7 @@ export class MatchesComponent implements OnInit, OnDestroy {
   notFilteredMatches: any;
 
   constructor(
-    private store: Store<any /*fromApp.AppState*/>,
+    private store: Store<AppState>,
     private navStateService: NavStateService,
     private filterService: FilterService
   ) {

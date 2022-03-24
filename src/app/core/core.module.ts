@@ -1,31 +1,20 @@
 import { NgModule } from '@angular/core';
 import { ErrorComponent } from './components/error/error.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavStateService } from './services/nav-state.service';
 import { HeaderComponent } from './components/header/header.component';
-import { AppRoutingModule } from '../app-routing.module';
-import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
-import { FavouriteEffects } from '../features/favourite/store/favourite.effects';
-import { LeagueEffects } from '../features/leagues/store/leagues.effects';
-import { AuthEffects } from '../auth/store/auth.effects';
-import { NotificationEffects } from '../notifications/store/notification.effects';
-import * as fromApp from './store/app.reducer';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FilterComponent } from '../shared/components/filter/filter.component';
+import { MatSlideToggle } from '@angular/material/slide-toggle';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
-  declarations: [
-    // fix module
-    // ErrorComponent
-  ],
-  imports: [],
-  exports: [
-    // ErrorComponent
-  ],
-  providers: [
-    // NavStateService
-  ],
+  declarations: [ErrorComponent, HeaderComponent],
+  imports: [BrowserModule, RouterModule, CommonModule, FormsModule, MatIconModule, MatButtonModule],
+  exports: [ErrorComponent, HeaderComponent],
+  providers: [NavStateService],
 })
 export class CoreModule {}

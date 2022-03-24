@@ -2,7 +2,10 @@ import { Platform } from '@angular/cdk/platform';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { SwPush, SwUpdate } from '@angular/service-worker';
-import { take } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
+import { Subject } from 'rxjs';
+import { take, takeUntil } from 'rxjs/operators';
+import { AppState } from '../../core/store/app.reducer';
 import { environment } from '../../../environments/environment';
 
 @Injectable({
@@ -12,12 +15,28 @@ export class PwaService {
   private promptEvent;
   public isAvailable = false;
 
-  constructor(private platform: Platform, private swPush: SwPush, private http: HttpClient) {}
+  destroy$: Subject<boolean> = new Subject<boolean>();
+
+  constructor(
+    private store: Store<AppState>,
+    private platform: Platform,
+    private swPush: SwPush,
+    private http: HttpClient
+  ) {
+    this.store
+      .select('auth')
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((authInfo: any) => {
+        if (authInfo.auth) {
+          this.subscribeToNotifications();
+        }
+      });
+  }
 
   subscribeToNotifications() {
     this.swPush
       .requestSubscription({
-        serverPublicKey: environment.googleClientId,
+        serverPublicKey: environment.notificationPubKey,
       })
       .then((sub) => {
         this.http
@@ -52,5 +71,10 @@ export class PwaService {
     this.promptEvent.userChoice.then(() => {
       this.promptEvent = null;
     });
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
   }
 }

@@ -23,7 +23,6 @@ export class TeamsComponent implements OnInit {
       .select('favourite')
       .pipe(skip(1))
       .subscribe((favourite) => {
-        // fix
         this.teams = favourite.teams;
         if (this.teams !== undefined) {
           this.isLoading = false;

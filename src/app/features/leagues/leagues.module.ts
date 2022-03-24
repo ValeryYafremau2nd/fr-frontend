@@ -8,10 +8,8 @@ import { StandingComponent } from './standing/standing.component';
 import { MatchesComponent } from './matches/matches.component';
 import { SquadComponent } from './teams/squad/squad.component';
 import { StrikersComponent } from './strikers/strikers.component';
-import { FilterComponent } from './matches/filter/filter.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../../app/shared/shared.module';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -21,16 +19,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatchesComponent,
     SquadComponent,
     StrikersComponent,
-    FilterComponent,
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    LeaguesRoutingModule,
-    RouterModule,
-    SharedModule,
-    MatSlideToggleModule,
-  ],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, LeaguesRoutingModule, RouterModule, SharedModule],
 })
 export class LeaguesModule {}

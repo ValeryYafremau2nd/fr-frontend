@@ -4,6 +4,6 @@ import { FavouriteRoutingModule } from './favourive-routing.module';
 import { SharedModule } from '../../../app/shared/shared.module';
 
 @NgModule({
-  imports: [RouterModule, FavouriteRoutingModule, SharedModule], // fix remove shared
+  imports: [RouterModule, FavouriteRoutingModule, SharedModule],
 })
 export class FavouriteModule {}

@@ -31,7 +31,6 @@ export class StandingComponent implements OnInit {
       .select('leagues')
       .pipe(takeUntil(this.destroy$))
       .subscribe((leagues) => {
-        // fix unsub
         const navState = this.navStateService.getCurrentState();
         const code = navState.league;
         const selectedLeague = leagues.leagues.find((league) => league.code === code);

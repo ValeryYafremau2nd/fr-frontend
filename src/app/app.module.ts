@@ -4,8 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './core/components/header/header.component';
-import { ErrorComponent } from './core/components/error/error.component';
 import { StoreModule } from '@ngrx/store';
 import * as fromApp from './core/store/app.reducer';
 import { NavStateService } from './core/services/nav-state.service';
@@ -21,47 +19,27 @@ import { NotificationModule } from './notifications/notification.module';
 import { NotificationEffects } from './notifications/store/notification.effects';
 import { ServiceWorkerModule, SwRegistrationOptions } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatInputModule } from '@angular/material/input';
-import { MatCardModule } from '@angular/material/card';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatTableModule } from '@angular/material/table';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { MatSelectModule } from '@angular/material/select';
-import { MatOptionModule } from '@angular/material/core';
-import { PwaService } from './notifications/services/pwa.service';
 
 @NgModule({
-  declarations: [AppComponent, ConfigurationComponent, HeaderComponent, ErrorComponent],
+  declarations: [AppComponent, ConfigurationComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    CoreModule,
     StoreModule.forRoot(fromApp.appReducer),
     EffectsModule.forRoot([FavouriteEffects, LeagueEffects, AuthEffects, NotificationEffects]),
     AppRoutingModule,
     NotificationModule,
+    MatSlideToggleModule,
     BrowserAnimationsModule,
     ServiceWorkerModule.register(`${environment.workerHref}/ngsw-worker.js`, {
       enabled: true,
     }),
-    MatToolbarModule,
-    MatInputModule,
-    MatCardModule,
-    MatMenuModule,
-    MatIconModule,
-    MatButtonModule,
-    MatTableModule,
-    MatSlideToggleModule,
-    MatSelectModule,
-    MatOptionModule,
   ],
   providers: [
     {
@@ -75,12 +53,6 @@ import { PwaService } from './notifications/services/pwa.service';
       multi: true,
     },
     { provide: LocationStrategy, useClass: HashLocationStrategy },
-    {
-      provide: APP_INITIALIZER,
-      useFactory: (pwaService: PwaService) => () => pwaService.initPwaPrompt(),
-      deps: [PwaService],
-      multi: true,
-    },
   ],
   bootstrap: [AppComponent],
 })

@@ -25,7 +25,6 @@ export class LeaguesComponent implements OnInit {
 
     if (navState.mode === Mode.Leagues) {
       this.storeSub = this.store.pipe(take(1)).subscribe((state) => {
-        // fix unsub
         this.isLoading = false;
         const trackedLeagues = state.favourite.leagues.map((league) => league.code);
         this.leagues = state.leagues.leagues.map((league) => ({
